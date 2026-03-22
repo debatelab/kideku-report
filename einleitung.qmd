@@ -1,0 +1,33 @@
+# Einleitung {#sec-einleitung}
+
+Generative Sprachmodelle und die damit verbundene Zunahme von KI-generierten Inhalten verändern die Informationsproduktion und -verarbeitung rasant. Spätestens mit der Veröffentlichung von ChatGPT im Dezember 2022 ist einer breiten Öffentlichkeit klar geworden, welche herausragenden -- noch vor einigen Jahren für unmöglich gehaltenen -- Fähigkeiten generative Sprachmodelle (Large Language Models, LLMs) besitzen und welche gesellschaftlichen Umwälzungen diese sich rasant entwickelnde Technologie nach sich ziehen könnte.
+
+Generative KI ist eine Dual-Use-Technologie: Manipulative Akteur:innen können sie nutzen, um liberale Demokratien zu schwächen -- etwa durch die massenhaft automatisierte Erzeugung von Desinformation, Propaganda und toxischen Inhalten. Doch generative KI stellt nicht nur ein Risiko dar, sondern birgt auch Chancen, die öffentliche Diskurslandschaft und die politische Willensbildung im Sinne der Ideale liberaler Demokratien zu stärken.
+
+Dieses Potential der Stärkung deliberativer Kultur ist vielfältig. Sprachmodelle können dazu genutzt werden, den öffentlichen Diskurs konstruktiver und inklusiver zu gestalten. Sie können die Rationalität des Diskurses stärken, indem sie Bürger:innen dabei helfen, relevante Argumente zu identifizieren, zu verstehen und zu evaluieren. KI kann auch dazu beitragen, Beteiligungsformate in einem zuvor nicht möglich gewesenen Maßstab zu skalieren und damit mehr Menschen Zugang zu politischer Partizipation zu eröffnen.
+
+Allerdings reicht es nicht aus, sich allein auf die technischen Möglichkeiten zu konzentrieren. Eine rein technokratische Perspektive birgt die Gefahr, relevante ethische und gesellschaftliche Aspekte auszublenden. KI-gestützte Deliberation darf grundlegende deliberative Normen nicht verletzen. Vielmehr sollte sie so ausgestaltet werden, dass wir diesen Normen zu einem hohen Maß gerecht werden. Wir müssen uns auch fragen, wie KI-gestützte Deliberation ausgestaltet werden muss, damit sie von Bürger:innen akzeptiert und genutzt wird. Der Einsatz von KI-basierten Applikationen kann unsere deliberative Kultur nur dann stärken, wenn diese von Bürger:innen verwendet werden, was wiederum ein hinreichend großes Vertrauen in die Sicherheit und Verlässlichkeit solcher Anwendungen voraussetzt.
+
+<!--
+
+Deliberative Kontexte zeichnen sich durch ihre besondere Rolle für demokratische Teilhabe aus. In ihnen üben Bürger:innen ihre politischen Rechte aus und nehmen mittelbar oder unmittelbar an der politischen Willensbildung teil. Daher ist zu erwarten, dass sie auf wahrgenommene Einschränkungen dieser Teilhaberechte sensibel reagieren. Es besteht die Gefahr, dass KI-gestützte Deliberation neue Ungleichheiten politischer Teilhabe erzeugt: Wenn technische Lösungen vor allem denjenigen zugutekommen, die über digitale Kompetenzen, Vertrauen in KI oder entsprechende Ressourcen verfügen, könnte die Einführung deliberativer KI zu einem neuen *deliberative divide* führen -- einem Graben zwischen denjenigen, die von KI-gestützter Deliberation profitieren, und denjenigen, die skeptisch oder ängstlich gegenüber KI eingestellt sind und sich in der Folge weniger beteiligen.
+
+-->
+
+<!-- KIdeKu Projekt -->
+
+Im Projekt *„Chancen von KI zur Stärkung unserer deliberativen Kultur“* (KIdeKu) sind wir der Frage nachgegangen, wie Large Language Models eingesetzt werden können, um deliberative Kultur zu stärken. Das Projekt wurde am Karlsruher Institut für Technologie (KIT) im Arbeitsbereich *Computationale Philosophie, Philosophische Methoden, Moralphilosophie & Angewandte Ethik* (CompPhil²MMAE) durchgeführt und vom Bundesministerium für Bildung, Familie, Senioren, Frauen und Jugend (BMBFSFJ) gefördert (Projektlaufzeit: 01.06.2024–31.12.2025).
+
+Dabei verfolgte das Projekt drei zentrale Ziele:
+
+1. *Entwicklung von Einsatzszenarien:* Die Identifizierung relevanter Einsatzszenarien von KI zur Stärkung deliberativer Kultur sollte einen umfassenden Überblick darüber geben, wie LLMs gemeinwohlorientiert in unserer demokratischen Praxis eingesetzt werden können.
+2. *Schaffung technischer Grundlagen:* Für ausgewählte Einsatzszenarien sollten technische Grundlagen in Form von Open-Source-Prototypen und offenen Datensätzen entwickelt werden, die von der Community genutzt und weiterentwickelt werden können.
+3. *Handlungsorientierung:* Aus den gewonnenen Erkenntnissen und Projektergebnissen sollten Empfehlungen für zivilgesellschaftliche und politische Akteur:innen entwickelt werden.
+
+Die Ziele wurden mit Abschluss des Projektes im Dezember 2025 erreicht. Der vorliegende Bericht fasst die Ergebnisse in drei Kapiteln zusammen:
+
+@sec-szenarien gibt einen Überblick über relevante Einsatzszenarien von KI zur Stärkung deliberativer Kultur. Die Szenarien werden entlang dreier Dimensionen -- Einsatzbereich, Ziele und Umsetzung -- charakterisiert und anhand konkreter Beispiele illustriert. Dabei wird gezeigt, wie KI-gestützte Anwendungen zur Förderung respektvoller Kommunikation, zur Stärkung der Diskursrationalität sowie zur Ermöglichung von Teilhabe und Inklusion beitragen können.
+
+@sec-projektergebnisse stellt die im Projekt entwickelten Prototypen und Datensätze vor: den KIdeKu *Toxicity-Detector*, einen LLM-basierten Prototyp zur Identifizierung toxischer Sprache; die *EvidenceSeeker-Boilerplate*, ein Code-Template für KI-basierte Faktenprüfung auf Grundlage eigener Wissensbestände (zum Beispiel in Form von Berichten); sowie den *syncIALO-Datensatz*, der als Trainings- und Evaluationsdatensatz für KI-gestützte Tools im Bereich der Argumentationsanalyse dienen kann.
+
+@sec-empfehlungen diskutiert zentrale Herausforderungen bei der Integration von KI-basierten Tools in deliberative Prozesse und formuliert Empfehlungen für das Design KI-basierter Deliberationstools. Es wird argumentiert, dass die Verlässlichkeit solcher Tools zentral für die Erreichung deliberativer Ziele und das Vertrauen von Nutzer:innen ist, woraus sich die Notwendigkeit ihrer systematischen Evaluierung und Optimierung ergibt.

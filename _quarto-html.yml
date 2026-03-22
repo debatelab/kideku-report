@@ -1,0 +1,8 @@
+book:
+  chapters:
+    - index.qmd
+    - einleitung.qmd
+    - einsatzszenarien.qmd
+    - projektergebnisse.qmd
+    - empfehlungen.qmd
+    - references.qmd

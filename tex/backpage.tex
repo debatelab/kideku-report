@@ -1,0 +1,4 @@
+%% Push backpage to an even (left-hand) page for correct two-sided placement.
+%% \cleardoubleevenpage inserts a blank page automatically when needed.
+\cleardoubleevenpage
+\IfFileExists{figures/back_page.pdf}{\includepdf[pages=-]{figures/back_page.pdf}}{}

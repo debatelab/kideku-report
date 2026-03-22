@@ -1,0 +1,66 @@
+project:
+  type: book
+  pre-render: ./pre-render.sh
+  output-dir: docs
+lang: de
+book:
+  title: "Chancen von KI zur Stärkung deliberativer Kultur"
+  author: "Sebastian Cacean"
+  # TODO:
+  date: "3/20/2026"
+  description: |
+    Diese Seite dokumentiert die Ergebnisse des KIdeKu-Projekts, das untersuchte, wie generative Sprachmodelle zur Stärkung deliberativer Demokratie eingesetzt werden können. Er systematisiert Einsatzszenarien, stellt die entwickelten Open-Source-Prototypen vor und formuliert Empfehlungen für den verantwortungsvollen KI-Einsatz in deliberativen Kontexten.
+  version: v1.0
+  # TODO:
+  doi: xx
+  downloads: [pdf]
+  sharing: [linkedin]
+  # TODO:
+  site-url: https://x
+  repo-url: https://x
+  license: "CC BY-SA 4.0"
+  keyword: "AI, LLM, deliberation, democracy, AI-tools, argumentation, Habermas"
+  # chapters are defined per-profile in _quarto-html.yml and _quarto-pdf.yml
+
+bibliography: literature.bib
+google-scholar: true
+
+
+# Profile group: html is the default (quarto render / quarto preview)
+# For PDF use: quarto render --profile pdf --to pdf
+profile:
+  group:
+    - [html, pdf]
+
+citation: 
+  type: report
+  url: https://xx
+  doi: xx
+
+
+format:
+  html:
+    theme: cosmo
+    css: custom.css
+    # theme:
+    #   light: flatly
+    #   dark: darkly
+    link-external-newwindow: true
+  pdf:
+    filters:
+      - strip-emoji.lua
+    documentclass: sdqtechreport
+    # documentclass: scrreprt
+    classoption: [twoside, ngerman]
+    papersize: a4
+    header-includes:
+      - \usepackage{pdfpages}
+      - \AtBeginDocument{\renewcommand{\maketitle}{}} # we use a dedicated `front_page.pdf` as front
+      # tcolorbox (used for callouts) resets \parindent and \parskip to 0pt internally.
+      # Restore them via the `before upper` hook so that paragraph spacing inside callouts
+      # matches the main text (parskip=half) and \vspace{\parskip} works as expected.
+      - \AtBeginDocument{\tcbset{before upper={\setlength{\parindent}{0pt}\setlength{\parskip}{0.5\baselineskip}}}}
+    include-before-body:
+      - tex/frontpage.tex
+      - tex/metapage.tex
+    include-after-body: tex/backpage.tex
