@@ -22,7 +22,6 @@ book:
   # chapters are defined per-profile in _quarto-html.yml and _quarto-pdf.yml
 
 bibliography: literature.bib
-google-scholar: true
 
 
 # Profile group: html is the default (quarto render / quarto preview)
@@ -33,14 +32,25 @@ profile:
 
 citation: 
   type: report
-  url: https://debatelab.github.io/kideku-report/
-  doi: 10.5445/IR/1000193096
+  title: "Chancen von KI zur Stärkung deliberativer Kultur"
+  author: "Sebastian Cacean"
+  publisher: "Karlsruher Institut für Technologie (KIT)"
+  publisher-place: "Karlsruhe"
+  issued: "2026-05-11"
+  url: "https://debatelab.github.io/kideku-report/"
+  doi: "10.5445/IR/1000193096"
+  number: "v1.0"
+  abstract: |
+    Diese Seite dokumentiert die Ergebnisse des KIdeKu-Projekts, das untersuchte, wie generative Sprachmodelle zur Stärkung deliberativer Demokratie eingesetzt werden können. Er systematisiert Einsatzszenarien, stellt die entwickelten Open-Source-Prototypen vor und formuliert Empfehlungen für den verantwortungsvollen KI-Einsatz in deliberativen Kontexten.
 
 
 format:
   html:
     theme: cosmo
     css: custom.css
+    google-scholar: true
+    header-includes: |
+      <meta name="citation_pdf_url" content="https://debatelab.github.io/kideku-report/Chancen-von-KI-zur-Stärkung-deliberativer-Kultur.pdf">
     # theme:
     #   light: flatly
     #   dark: darkly
