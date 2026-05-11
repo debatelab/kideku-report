@@ -58,8 +58,8 @@ format:
   pdf:
     filters:
       - strip-emoji.lua
-    documentclass: sdqtechreport # (contains KIT specific styling that is not open source)
-    # documentclass: scrreprt
+    # documentclass: sdqtechreport # (contains KIT specific styling that is not open source)
+    documentclass: scrreprt
     classoption: [twoside, ngerman]
     papersize: a4
     header-includes:
