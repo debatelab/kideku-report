@@ -17,10 +17,21 @@ Die profilspezifischen Kapitelstrukturen sind in `_quarto-html.yml` bzw. `_quart
 
 ## Rendern
 
-### HTML-Ausgabe (Standard)
+### Beide Formate (empfohlen)
 
 ```bash
-quarto render
+make
+```
+
+Rendert sowohl HTML- als auch PDF-Ausgabe. Der Pre-Render-Hook wird für jedes Format separat mit dem korrekten Profil aufgerufen, sodass `index.qmd` jeweils das richtige Inhalt erhält (Vorwort für HTML, Einleitung für PDF).
+
+**Hinweis:** `quarto render` ohne explizites Profil führt den Pre-Render-Hook nur einmal aus und kann daher nicht beide Formate korrekt erzeugen. Verwenden Sie daher `make` oder die einzelnen Targets unten.
+
+### HTML-Ausgabe
+
+```bash
+make html
+# oder: quarto render --profile html
 ```
 
 Erzeugt die mehrseitige HTML-Website im Verzeichnis `docs/`.
@@ -28,14 +39,24 @@ Erzeugt die mehrseitige HTML-Website im Verzeichnis `docs/`.
 Alternativ für die Live-Vorschau im Browser:
 
 ```bash
-quarto preview
+make preview
+# oder: quarto preview --profile html
 ```
 
 ### PDF-Ausgabe
 
 ```bash
-quarto render --profile pdf --to pdf
+make pdf
+# oder: quarto render --profile pdf --to pdf
 ```
 
-Erzeugt `_book/<titel>.pdf`.
+Erzeugt `docs/<titel>.pdf`.
+
+### Weitere Makefile-Targets
+
+```bash
+make clean   # Löscht das gesamte docs/ Verzeichnis
+make help    # Zeigt alle verfügbaren Targets
+```
+
 
