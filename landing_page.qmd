@@ -1,6 +1,6 @@
 # Home {.unnumbered}
 
-<a href="./_book/Chancen-von-KI-zur-Stärkung-deliberativer-Kultur.pdf" target="_blank" class="float-right" style="width:220px;">
+<a href="./Chancen-von-KI-zur-Stärkung-deliberativer-Kultur.pdf" target="_blank" class="float-right" style="width:220px;">
   <img src="./figures/frontpage_thumbnail.png" alt="PDF herunterladen">
 </a>
 
