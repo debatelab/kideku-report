@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Diese Seite dokumentiert die Ergebnisse des KIdeKu-Projekts, das untersuchte, wie generative Sprachmodelle zur Stärkung deliberativer Demokratie eingesetzt werden können. Er systematisiert Einsatzszenarien, stellt die entwickelten Open-Source-Prototypen vor und formuliert Empfehlungen für den verantwortungsvollen KI-Einsatz in deliberativen Kontexten.">
+
+<title>4&nbsp; Herausforderungen und Empfehlungen – Chancen von KI zur Stärkung deliberativer Kultur</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./projektergebnisse.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+<meta name="citation_pdf_url" content="https://debatelab.github.io/kideku-report/Chancen-von-KI-zur-Stärkung-deliberativer-Kultur.pdf">
+
+
+<link rel="stylesheet" href="custom.css">
+<meta name="citation_title" content="Chancen von KI zur Stärkung deliberativer Kultur">
+<meta name="citation_abstract" content="Diese Seite dokumentiert die Ergebnisse des KIdeKu-Projekts, das untersuchte, wie generative Sprachmodelle zur Stärkung deliberativer Demokratie eingesetzt werden können. Er systematisiert Einsatzszenarien, stellt die entwickelten Open-Source-Prototypen vor und formuliert Empfehlungen für den verantwortungsvollen KI-Einsatz in deliberativen Kontexten.
+">
+<meta name="citation_author" content="Sebastian Cacean">
+<meta name="citation_publication_date" content="2026-05-11">
+<meta name="citation_cover_date" content="2026-05-11">
+<meta name="citation_year" content="2026">
+<meta name="citation_fulltext_html_url" content="https://debatelab.github.io/kideku-report/">
+<meta name="citation_doi" content="10.5445/IR/1000193096">
+<meta name="citation_language" content="de">
+<meta name="citation_technical_report_institution" content="Karlsruher Institut für Technologie (KIT)">
+<meta name="citation_technical_report_number" content="v1.0">
+<meta name="citation_reference" content="citation_title=Hate Speech Detection Using Large Language Models: A Comprehensive Review;,citation_abstract=The widespread use of social media and other online platforms has facilitated unprecedented communication and information exchange. However, it has also led to the spread of hate speech and poses serious challenges to societal harmony as well as individual well-being. Traditional methods for detecting hate speech, such as keyword matching, rule-based systems, and machine learning algorithms, often struggle to capture the subtle and context-dependent nature of hateful content. This paper provides a comprehensive review of the application of large language models (LLMs) like GPT-3, BERT, and their successors in hate speech detection. We analyze the evolution of LLMs in natural language processing and examine their strengths and limitations in identifying hate speech. Additionally, we address the significant challenges and explore how LLMs method can affect the accuracy and fairness of hate speech detection systems. By synthesizing recent research, this review aims to offer a holistic understanding of the current state-of-the-art methods in hate speech detection utilizing LLMs and to suggest directions for future research that could enhance the efficacy and equity of these systems.;,citation_author=Aish Albladi;,citation_author=Minarul Islam;,citation_author=Amit Das;,citation_author=Maryam Bigonah;,citation_author=Zheng Zhang;,citation_author=Fatemeh Jamshidi;,citation_author=Mostafa Rahgouy;,citation_author=Nilanjana Raychawdhary;,citation_author=Daniela Marghitu;,citation_author=Cheryl Seals;,citation_publication_date=2025;,citation_cover_date=2025;,citation_year=2025;,citation_doi=10.1109/ACCESS.2025.3532397;,citation_issn=2169-3536;,citation_volume=13;,citation_journal_title=IEEE Access;">
+<meta name="citation_reference" content="citation_title=Leveraging AI for democratic discourse: Chat interventions can improve online political conversations at scale;,citation_abstract=We develop an AI chat assistant that makes real-time, evidence-based suggestions for messages in divisive online political conversations. In a randomized controlled trial, we show that when one participant in a conversation had access to this assistant, it increased their partner’s reported quality of conversation and both participants’ willingness to grant political opponents space to express and advocate their views in the public sphere. Participants had the ability to accept, modify, or ignore the AI chat assistant’s recommendations. Notably, participants’ policy positions were unchanged by the intervention. Though many are rightly concerned about the role of AI sowing social division, our findings suggest it can do the opposite—improve political conversations without manipulating participants’ views. Political discourse is the soul of democracy, but misunderstanding and conflict can fester in divisive conversations. The widespread shift to online discourse exacerbates many of these problems and corrodes the capacity of diverse societies to cooperate in solving social problems. Scholars and civil society groups promote interventions that make conversations less divisive or more productive, but scaling these efforts to online discourse is challenging. We conduct a large-scale experiment that demonstrates how online conversations about divisive topics can be improved with AI tools. Specifically, we employ a large language model to make real-time, evidence-based recommendations intended to improve participants’ perception of feeling understood. These interventions improve reported conversation quality, promote democratic reciprocity, and improve the tone, without systematically changing the content of the conversation or moving people’s policy attitudes.;,citation_author=Lisa P. Argyle;,citation_author=Christopher A. Bail;,citation_author=Ethan C. Busby;,citation_author=Joshua R. Gubler;,citation_author=Thomas Howe;,citation_author=Christopher Rytting;,citation_author=Taylor Sorensen;,citation_author=David Wingate;,citation_publication_date=2023;,citation_cover_date=2023;,citation_year=2023;,citation_issue=41;,citation_doi=10.1073/pnas.2311627120;,citation_volume=120;,citation_journal_title=Proceedings of the National Academy of Sciences;">
+<meta name="citation_reference" content="citation_title=Disentangling Diversity in Deliberative Democracy: Competing Theories, Their Blind Spots and Complementarities*;,citation_author=André Bächtiger;,citation_author=Simon Niemeyer;,citation_author=Michael Neblo;,citation_author=Marco R. Steenbergen;,citation_author=Jürg Steiner;,citation_publication_date=2010;,citation_cover_date=2010;,citation_year=2010;,citation_issue=1;,citation_doi=10.1111/j.1467-9760.2009.00342.x;,citation_issn=1467-9760;,citation_volume=18;,citation_language=en-US;,citation_journal_title=Journal of Political Philosophy;">
+<meta name="citation_reference" content="citation_title=Supersharers of fake news on Twitter;,citation_abstract=Governments may have the capacity to flood social media with fake news, but little is known about the use of flooding by ordinary voters. In this work, we identify 2107 registered US voters who account for 80% of the fake news shared on Twitter during the 2020 US presidential election by an entire panel of 664,391 voters. We found that supersharers were important members of the network, reaching a sizable 5.2% of registered voters on the platform. Supersharers had a significant overrepresentation of women, older adults, and registered Republicans. Supersharers’ massive volume did not seem automated but was rather generated through manual and persistent retweeting. These findings highlight a vulnerability of social media for democracy, where a small group of people distort the political reality for many.;,citation_author=Sahar Baribi-Bartov;,citation_author=Briony Swire-Thompson;,citation_author=Nir Grinberg;,citation_publication_date=2024-05;,citation_cover_date=2024-05;,citation_year=2024;,citation_issue=6699;,citation_doi=10.1126/science.adl4435;,citation_volume=384;,citation_journal_title=Science;,citation_publisher=American Association for the Advancement of Science;">
+<meta name="citation_reference" content="citation_title=Comparative Survey of German Hate Speech Datasets: Background, Characteristics and Biases;,citation_abstract=The large fraction of hate speech and other offensive and objectionable content online poses a vast challenge to societies. Offensive language such as insulting, hurtful, derogatory, or obscene content directed from one person to another and open to others undermines objective discussions. Hate speech detection quality depends on the datasets available for training. Potential bias needs to be identified in order to increase the generalization performance of the trained classifiers. This article gives an overview on nine German hate speech datasets. We apply a framework from the literature to gain insights into potential bias. Using different methods, our analysis shows that there are various topics in the different datasets. The results are shown and compared for LSI, Topic models, Mutual Information and Shapley values.;,citation_author=Markus Bertram;,citation_author=Johannes Schäfer;,citation_author=Thomas Mandl;,citation_publication_date=2023-10;,citation_cover_date=2023-10;,citation_year=2023;,citation_conference_title=CEUR Workshop Proceedings;">
+<meta name="citation_reference" content="citation_title=Ethical Aspects of Climate Engineering;,citation_author=Gregor Betz;,citation_author=Sebastian Cacean;,citation_publication_date=2012;,citation_cover_date=2012;,citation_year=2012;">
+<meta name="citation_reference" content="citation_title=Thinking aloud: Dynamic context generation improves zero-shot reasoning performance of GPT-2;,citation_author=Gregor Betz;,citation_author=Kyle Richardson;,citation_author=Christian Voigt;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_fulltext_html_url=https://arxiv.org/abs/2103.13033;,citation_journal_title=arXiv preprint arXiv:2103.13033;">
+<meta name="citation_reference" content="citation_title=Lauter Hass - leiser Rückzug: wie Hass im Netz den demokratischen Diskurs bedroht: Ergebnisse einer repräsentativen Befragung;,citation_editor=Jutta Brennauer;,citation_editor=Valentin Dander;,citation_editor=Corinna Dolezalek;,citation_editor=Kompetenznetzwerk gegen Hass im Netz;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_isbn=978-3-00-078034-9;,citation_language=de-DE;">
+<meta name="citation_reference" content="citation_title=Can LLM-generated misinformation be detected?;,citation_author=Canyu Chen;,citation_author=Kai Shu;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;">
+<meta name="citation_reference" content="citation_title=Deliberation and democratic legitimacy;,citation_author=Joshua Cohen;,citation_publication_date=2005;,citation_cover_date=2005;,citation_year=2005;,citation_inbook_title=Debates in contemporary political philosophy;">
+<meta name="citation_reference" content="citation_title=What Is Disinformation?;,citation_abstract=Prototypical instances of disinformation include deceptive advertising (in business and in politics), government propaganda, doctored photographs, forged documents, fake maps, internet frauds, fake websites, and manipulated Wikipedia entries. Disinformation can cause significant harm if people are misled by it. In order to address this critical threat to information quality, we first need to understand exactly what disinformation is. This paper surveys the various analyses of this concept that have been proposed by information scientists and philosophers (most notably, Luciano Floridi). It argues that these analyses are either too broad (that is, that they include things that are not disinformation), or too narrow (they exclude things that are disinformation), or both. Indeed, several of these analyses exclude important forms of disinformation, such as true disinformation, visual disinformation, side-effect disinformation, and adaptive disinformation. After considering the shortcomings of these analyses, the paper argues that disinformation is misleading information that has the function of misleading. Finally, in addition to responding to Floridi’s claim that such a precise analysis of disinformation is not necessary, it briefly discusses how this analysis can help us develop techniques for detecting disinformation and policies for deterring its spread.;,citation_author=Don Fallis;,citation_publication_date=2015;,citation_cover_date=2015;,citation_year=2015;,citation_issue=3;,citation_issn=1559-0682;,citation_volume=63;,citation_journal_title=Library Trends;,citation_publisher=Johns Hopkins University Press;">
+<meta name="citation_reference" content="citation_title=A Survey on Automatic Detection of Hate Speech in Text;,citation_abstract=The scientific study of hate speech, from a computer science point of view, is recent. This survey organizes and describes the current state of the field, providing a structured overview of previous approaches, including core algorithms, methods, and main features used. This work also discusses the complexity of the concept of hate speech, defined in many platforms and contexts, and provides a unifying definition. This area has an unquestionable potential for societal impact, particularly in online communities and digital media platforms. The development and systematization of shared resources, such as guidelines, annotated datasets in multiple languages, and algorithms, is a crucial step in advancing the automatic detection of hate speech.;,citation_author=Paula Fortuna;,citation_author=Sérgio Nunes;,citation_publication_date=2018-07;,citation_cover_date=2018-07;,citation_year=2018;,citation_issue=4;,citation_doi=10.1145/3232676;,citation_issn=0360-0300;,citation_volume=51;,citation_journal_title=ACM Comput. Surv.;">
+<meta name="citation_reference" content="citation_title=Toxic, hateful, offensive or abusive? What are we really classifying? An empirical analysis of hate speech datasets;,citation_abstract=The field of the automatic detection of hate speech and related concepts has raised a lot of interest in the last years. Different datasets were annotated and classified by means of applying different machine learning algorithms. However, few efforts were done in order to clarify the applied categories and homogenize different datasets. Our study takes up this demand. We analyze six different publicly available datasets in this field with respect to their similarity and compatibility. We conduct two different experiments. First, we try to make the datasets compatible and represent the dataset classes as Fast Text word vectors analyzing the similarity between different classes in a intra and inter dataset manner. Second, we submit the chosen datasets to the Perspective API Toxicity classifier, achieving different performances depending on the categories and datasets. One of the main conclusions of these experiments is that many different definitions are being used for equivalent concepts, which makes most of the publicly available datasets incompatible. Grounded in our analysis, we provide guidelines for future dataset collection and annotation.;,citation_author=Paula Fortuna;,citation_author=Juan Soler;,citation_author=Leo Wanner;,citation_editor=Nicoletta Calzolari;,citation_editor=Frédéric Béchet;,citation_editor=Philippe Blache;,citation_editor=Khalid Choukri;,citation_editor=Christopher Cieri;,citation_editor=Thierry Declerck;,citation_editor=Sara Goggi;,citation_editor=Hitoshi Isahara;,citation_editor=Bente Maegaard;,citation_editor=Joseph Mariani;,citation_editor=Hélène Mazo;,citation_editor=Asuncion Moreno;,citation_editor=Jan Odijk;,citation_editor=Stelios Piperidis;,citation_publication_date=2020-05;,citation_cover_date=2020-05;,citation_year=2020;,citation_isbn=979-10-95546-34-4;,citation_language=en-US;,citation_conference_title=Proceedings of the twelfth language resources and evaluation conference;,citation_conference=European Language Resources Association;">
+<meta name="citation_reference" content="citation_title=Argumentkartierung von politischen Debatten: Identifikation von Zielkonflikten und Lösungsstrategien in transdisziplinären Forschungsprojekten;,citation_abstract=Es ist eine Herausforderung und häufig noch eine methodische Leerstelle in Beteiligungsprozessen, wie unterschiedliches Wissen zusammengeführt und der Stand der Diskussion aufgearbeitet und geteilt werden kann. In diesem Paper zeigen wir auf, wie die Methode der Argumentationskartierung dazu genutzt werden kann, in einem transdisziplinären Forschungsprojekt Zielkonflikte und Lösungsstrategien zu identifizieren. Im Rahmen des Forschungsprojektes &amp;amp;amp;quot;Dezentrale Energiewende zwischen sozialer Gerechtigkeit, Systemkosten und Umweltschutz - Zielkonflikte und Lösungsstrategien&amp;quot; (Kurztitel DEZ-ZIELKONFLIKTE) wurde zur Aufarbeitung der Debatte, inwiefern eine dezentrale Energiewende erstrebenswert ist, die Methode der Argumentkartierung angewendet und soll in diesem Papier als Case-Study dienen. Die Case-Sudy zeigt, dass Argumentationslandkarten einen möglichst umfänglichen und geordneten Überblick über eine Debatte geben und damit die Brennpunkte der Debatte sichtbar machen, so dass Lösungsstrategien und wohlinformierte Entscheidungen erarbeitet werden können.;,citation_author=David Frank;,citation_author=Viktoria Scheidler;,citation_author=Eva Schmid;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_language=de-DE;,citation_technical_report_institution=WZB Discussion Paper;,citation_technical_report_number=SP III 2024-601;">
+<meta name="citation_reference" content="citation_title=AI and Deliberation: Normative Ideals in the Light of Current AI Research - A Review;,citation_abstract=This paper reviews current research on artificial intelligence (AI) in the context of online discussions, using deliberative norms as a theoretical framework. Focusing on deliberative dimensions of civility, equality, rationality, and reciprocity, the study examines 171 articles, finding that most AI research to date emphasizes enhancing rationality and civility in online discourse. Techniques such as argument mining and hate speech detection are commonly employed to improve discussion quality, fostering more structured and respectful communication. However, efforts to address equality and reciprocity—the foundational principles of democratic discourse—remain sparse. For example, while AI excels at detecting incivility and structuring complex arguments, it struggles to ensure balanced participation or reciprocal engagement among diverse users. This imbalance highlights critical gaps in the application of AI for fostering equitable and inclusive dialogue. The paper argues that current approaches often lack grounding in normative democratic standards, limiting their ability to promote genuine deliberation. By incorporating deliberative principles into AI design, researchers and practitioners can create tools that support democratic ideals, mitigating biases and amplifying underrepresented voices. Ultimately, this review provides a roadmap for leveraging AI to enhance civility, rationality, equality, and reciprocity in online discussions, paving the way for more inclusive and responsive digital public spheres.;,citation_author=Dennis Friess;,citation_author=Carina Weinmann;,citation_author=Mira Warné;,citation_publication_date=2025-12;,citation_cover_date=2025-12;,citation_year=2025;,citation_issue=1;,citation_doi=10.16997/jdd.1805;,citation_issn=2634-0488;,citation_volume=21;,citation_language=en-US;,citation_journal_title=Journal of Deliberative Democracy;,citation_publisher=University of Westminster Press;">
+<meta name="citation_reference" content="citation_title=A Systematic Review of Online Deliberation Research;,citation_abstract=This article takes stock of the growing field of online deliberation research. Our review of the theoretical and empirical findings is guided by a framework encompassing the three relevant components of deliberation: the institutional design that enables and fosters deliberation (institutional input: “design”), the quality of the communication process (communicative throughput: “process”), and the expected results of deliberation (productive outcome: “results”). Our findings show that scholarly attention is unevenly distributed across the different components of the framework. Most research has focused on the quality of the online discussion (process). A fair amount of research has focused on the institutional conditions fostering deliberation (design), while the outcomes of online deliberation processes (results) have mostly been neglected. This picture is repeated in terms of the causal relations between design, process, and results of deliberation: Most studies have dealt with the effects of the platform design on the degree of deliberation (design-process). Much less is known about how the process of deliberation shapes the outcomes of deliberation (process-results). Studies investigating all three aspects of deliberation and their causal links (design-process-results) are particularly rare.;,citation_author=Dennis Friess;,citation_author=Christiane Eilders;,citation_publication_date=2015;,citation_cover_date=2015;,citation_year=2015;,citation_issue=3;,citation_doi=10.1002/poi3.95;,citation_issn=1944-2866;,citation_volume=7;,citation_language=en-US;,citation_journal_title=Policy &amp;amp;amp; Internet;">
+<meta name="citation_reference" content="citation_title=Deliberative and non-deliberative persuasion: Mechanisms of opinion formation in EuroPolis;,citation_abstract=From a normative vantage point, post-deliberative opinions should be linked to the quality of arguments presented during discussion. Yet, there is a dearth of research testing this claim. Our study makes a first attempt to overcome this deficiency. By analyzing a European deliberative poll on third country migration, we explore whether statements backed by reason affect opinions, which we term deliberative persuasion. We contrast deliberative persuasion to non-deliberative persuasion, whereby we explore whether the most frequently repeated position influences opinions. We find that with regard to regularization of irregular immigrants, deliberative persuasion took place. In the context of European involvement in immigration affairs, however, opinions are driven by the most frequently repeated position rather than by the quality of argumentation.;,citation_author=Marlène Gerber;,citation_author=André Bächtiger;,citation_author=Irena Fiket;,citation_author=Marco Steenbergen;,citation_author=Jürg Steiner;,citation_publication_date=2014-09;,citation_cover_date=2014-09;,citation_year=2014;,citation_issue=3;,citation_doi=10.1177/1465116514528757;,citation_issn=1465-1165;,citation_volume=15;,citation_language=en-US;,citation_journal_title=European Union Politics;">
+<meta name="citation_reference" content="citation_title=Learning from online hate speech and digital racism: From automated to diffractive methods in social media analysis;,citation_abstract=There has been a dramatic surge in uses of big data analytics and automated methods to detect and remove hate speech from social media, with these methods deployed both by platforms themselves and within academic research. At the same time, recent social scientific scholarship has accused social media data analytics of decontextualizing complex sociological issues and reducing them to linguistic problems that can be straightforwardly mapped and removed. Intervening in these debates, this article draws on findings from two interdisciplinary projects, spanning five years in total, which generated comparative datasets from Twitter (X). Focusing on three issues that we identified and negotiated in our own analysis – which we characterize as problems of context, classification and reproducibility – we build on existing critiques of automated methods, while also charting methodological pathways forward. Informed by theoretical debates in feminist science studies and STS, we set out a diffractive approach to engaging with large datasets from social media, which centralizes tensions rather than correlations between computational, quantitative and qualitative data.;,citation_author=Eva Haifa Giraud;,citation_author=Elizabeth Poole;,citation_author=Ed Quincey;,citation_author=John E. Richardson;,citation_publication_date=2025-11;,citation_cover_date=2025-11;,citation_year=2025;,citation_issue=6;,citation_doi=10.1177/00380261241305260;,citation_issn=0038-0261;,citation_volume=73;,citation_language=en-US;,citation_journal_title=The Sociological Review;,citation_publisher=SAGE Publications Ltd;">
+<meta name="citation_reference" content="citation_title=Kriterien zur Evaluation von Dialog- und Beteiligungsverfahren;,citation_abstract=Rüdiger Goldschmidt erarbeitet ein integratives System aus sechs Metakriterien zur Evaluation von Dialog- und Beteiligungs­verfahren:...;,citation_author=Rüdiger Goldschmidt;,citation_publication_date=2014;,citation_cover_date=2014;,citation_year=2014;,citation_isbn=978-3-658-06120-3;">
+<meta name="citation_reference" content="citation_title=LLMs for Argument Mining: Detection, Extraction, and Relationship Classification of pre-defined Arguments in Online Comments;,citation_abstract=Automated large-scale analysis of public discussions around contested issues like abortion requires detecting and understanding the use of arguments. While Large Language Models (LLMs) have shown promise in language processing tasks, their performance in mining topic-specific, pre-defined arguments in online comments remains underexplored. We evaluate four state-of-the-art LLMs on three argument mining tasks using datasets comprising over 2,000 opinion comments across six polarizing topics. Quantitative evaluation suggests an overall strong performance across the three tasks, especially for large and fine-tuned LLMs, albeit at a significant environmental cost. However, a detailed error analysis revealed systematic shortcomings on long and nuanced comments and emotionally charged language, raising concerns for downstream applications like content moderation or opinion analysis. Our results highlight both the promise and current limitations of LLMs for automated argument analysis in online comments.;,citation_author=Matteo Guida;,citation_author=Yulia Otmakhova;,citation_author=Eduard Hovy;,citation_author=Lea Frermann;,citation_editor=Jonathan K. Kummerfeld;,citation_editor=Aditya Joshi;,citation_editor=Mark Dras;,citation_publication_date=2025-11;,citation_cover_date=2025-11;,citation_year=2025;,citation_conference_title=Proceedings of the 23rd Annual Workshop of the Australasian Language Technology Association;,citation_conference=Association for Computational Linguistics;">
+<meta name="citation_reference" content="citation_title=An Investigation of Large Language Models for Real-World Hate Speech Detection;,citation_abstract=Hate speech has emerged as a major problem plaguing our social spaces today. While there have been significant efforts to address this problem, existing methods are still significantly limited in effectively detecting hate speech online. A major limitation of existing methods is that hate speech detection is a highly contextual problem, and these methods cannot fully capture the context of hate speech to make accurate predictions. Recently, large language models (LLMs) have demonstrated state-of-the-art performance in several natural language tasks. LLMs have undergone extensive training using vast amounts of natural language data, enabling them to grasp intricate contextual details. Hence, they could be used as knowledge bases for context-aware hate speech detection. However, a fundamental problem with using LLMs to detect hate speech is that there are no studies on effectively prompting LLMs for context-aware hate speech detection. In this study, we conduct a large-scale study of hate speech detection, employing five established hate speech datasets. We discover that LLMs not only match but often surpass the performance of current benchmark machine learning models in identifying hate speech. By proposing four diverse prompting strategies that optimize the use of LLMs in detecting hate speech. Our study reveals that a meticulously crafted reasoning prompt can effectively capture the context of hate speech by fully utilizing the knowledge base in LLMs, significantly outperforming existing techniques. Furthermore, although LLMs can provide a rich knowledge base for the contextual detection of hate speech, suitable prompting strategies play a crucial role in effectively leveraging this knowledge base for efficient detection.;,citation_author=Keyan Guo;,citation_author=Alexander Hu;,citation_author=Jaden Mu;,citation_author=Ziheng Shi;,citation_author=Ziming Zhao;,citation_author=Nishant Vishwamitra;,citation_author=Hongxin Hu;,citation_publication_date=2024-01;,citation_cover_date=2024-01;,citation_year=2024;,citation_fulltext_html_url=https://arxiv.org/abs/2401.03346;,citation_doi=10.48550/arXiv.2401.03346;,citation_publisher=arXiv;">
+<meta name="citation_reference" content="citation_title=A Survey on Automated Fact-Checking;,citation_abstract=Fact-checking has become increasingly important due to the speed with which both information and misinformation can spread in the modern media ecosystem. Therefore, researchers have been exploring how fact-checking can be automated, using techniques based on natural language processing, machine learning, knowledge representation, and databases to automatically predict the veracity of claims. In this paper, we survey automated fact-checking stemming from natural language processing, and discuss its connections to related tasks and disciplines. In this process, we present an overview of existing datasets and models, aiming to unify the various definitions given and identify common concepts. Finally, we highlight challenges for future research.;,citation_author=Zhijiang Guo;,citation_author=Michael Schlichtkrull;,citation_author=Andreas Vlachos;,citation_publication_date=2022-02;,citation_cover_date=2022-02;,citation_year=2022;,citation_doi=10.1162/tacl_a_00454;,citation_issn=2307-387X;,citation_volume=10;,citation_journal_title=Transactions of the Association for Computational Linguistics;">
+<meta name="citation_reference" content="citation_title=Theorie des kommunikativen Handelns.;,citation_author=Jürgen Habermas;,citation_publication_date=1981;,citation_cover_date=1981;,citation_year=1981;">
+<meta name="citation_reference" content="citation_title=Artificial Intelligence in deliberation: The AI penalty and the emergence of a new deliberative divide;,citation_abstract=Advances in Artificial Intelligence (AI) promise help for democratic deliberation, such as processing information, moderating discussion, and fact-checking. But public views of AI’s role remain underexplored. Given widespread skepticism, integrating AI into deliberative formats may lower trust and willingness to participate. We report a preregistered within-subjects survey experiment with a representative German sample (n&nbsp;=&nbsp;1850) testing how information about AI-facilitated deliberation affects willingness to participate and expected quality. Respondents were randomly assigned to descriptions of identical deliberative tasks facilitated by either AI or humans, enabling causal identification of information effects. Results show a clear AI penalty: participants were less willing to engage in AI-facilitated deliberation and anticipated lower deliberative quality than for human-facilitated formats. The penalty shrank among respondents who perceived greater societal benefits of AI or tended to anthropomorphize it, but grew with higher assessments of AI risk. These findings indicate that AI-facilitated deliberation currently faces substantial public skepticism and may create a new “deliberative divide.” Unlike traditional participation gaps linked to education or demographics, this divide reflects attitudes toward AI. Efforts to realize AI’s affordances should directly address these perceptions to offset the penalty and avoid discouraging participation or exacerbating participatory inequalities.;,citation_author=Andreas Jungherr;,citation_author=Adrian Rauchfleisch;,citation_publication_date=2025-12;,citation_cover_date=2025-12;,citation_year=2025;,citation_issue=4;,citation_doi=10.1016/j.giq.2025.102079;,citation_issn=0740-624X;,citation_volume=42;,citation_journal_title=Government Information Quarterly;">
+<meta name="citation_reference" content="citation_title=Content analysis an introduction to its methodology;,citation_author=Klaus Krippendorff;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_isbn=978-1-5063-9566-1;">
+<meta name="citation_reference" content="citation_title=Silent signals, loud impact: LLMs for word-sense disambiguation of coded dog whistles;,citation_abstract=A dog whistle is a form of coded communication that carries a secondary meaning to specific audiences and is often weaponized for racial and socioeconomic discrimination. Dog whistling historically originated from United States politics, but in recent years has taken root in social media as a means of evading hate speech detection systems and maintaining plausible deniability. In this paper, we present an approach for word-sense disambiguation of dog whistles from standard speech using Large Language Models (LLMs), and leverage this technique to create a dataset of 16,550 high-confidence coded examples of dog whistles used in formal and informal communication. Silent Signals is the largest dataset of disambiguated dog whistle usage, created for applications in hate speech detection, neology, and political science.;,citation_author=Julia Kruk;,citation_author=Michela Marchini;,citation_author=Rijul Magu;,citation_author=Caleb Ziems;,citation_author=David Muchlinski;,citation_author=Diyi Yang;,citation_editor=Lun-Wei Ku;,citation_editor=Andre Martins;,citation_editor=Vivek Srikumar;,citation_publication_date=2024-08;,citation_cover_date=2024-08;,citation_year=2024;,citation_doi=10.18653/v1/2024.acl-long.675;,citation_conference_title=Proceedings of the 62nd annual meeting of the association for computational linguistics (volume 1: Long papers);,citation_conference=Association for Computational Linguistics;">
+<meta name="citation_reference" content="citation_title=Wie argumentieren Rechtspopulisten? Eine Argumentationsanalyse des AfD-Wahlprogramms;,citation_author=David Lanius;,citation_publication_date=2017;,citation_cover_date=2017;,citation_year=2017;,citation_doi=10.5445/IR/1000074060;,citation_issn=2366-553X;,citation_language=de-DE;,citation_publisher=KITopen;">
+<meta name="citation_reference" content="citation_title=Argument Mining: A Survey;,citation_abstract=Argument Mining is the automatic identification and extraction of the structure of inference and reasoning expressed as arguments presented in natural language. Understanding argumentative structure makes it possible to determine not only what positions people are adopting, but also why they hold the opinions they do, providing valuable insights in domains as diverse as financial market prediction and public relations. This paper explores the techniques that establish the foundations for argument mining, provides a review of recent advances in argument mining techniques, and discusses the challenges faced in automatically extracting a deeper understanding of reasoning expressed in language in general.;,citation_author=John Lawrence;,citation_author=Chris Reed;,citation_publication_date=2019-10;,citation_cover_date=2019-10;,citation_year=2019;,citation_doi=10.1162/COLI_a_00364;,citation_issn=0891-2017;,citation_journal_title=Computational Linguistics;">
+<meta name="citation_reference" content="citation_title=Argumentation Mining: State of the Art and Emerging Trends;,citation_abstract=Argumentation mining aims at automatically extracting structured arguments from unstructured textual documents. It has recently become a hot topic also due to its potential in processing information originating from the Web, and in particular from social media, in innovative ways. Recent advances in machine learning methods promise to enable breakthrough applications to social and economic sciences, policy making, and information technology: something that only a few years ago was unthinkable. In this survey article, we introduce argumentation models and methods, review existing systems and applications, and discuss challenges and perspectives of this exciting new research area.;,citation_author=Marco Lippi;,citation_author=Paolo Torroni;,citation_publication_date=2016-03;,citation_cover_date=2016-03;,citation_year=2016;,citation_issue=2;,citation_doi=10.1145/2850417;,citation_issn=1533-5399;,citation_volume=16;,citation_journal_title=ACM Trans. Internet Technol.;">
+<meta name="citation_reference" content="citation_title=Overview of the HASOC track at FIRE 2019: Hate speech and offensive content identification in indo-european languages;,citation_abstract=The identification of Hate Speech in Social Media is of great importance and receives much attention in the text classification community. There is a huge demand for research for languages other than English. The HASOC track intends to stimulate development in Hate Speech for Hindi, German and English. Three datasets were developed from Twitter and Facebook and made available. Binary classification and more fine-grained subclasses were offered in 3 subtasks. For all subtasks, 321 experiments were submitted. The approaches used most often were LSTM networks processing word embedding input. The performance of the best system for identification of Hate Speech for English, Hindi, and German was a Marco-F1 score of 0.78, 0.81 and 0.61, respectively.;,citation_author=Thomas Mandl;,citation_author=Sandip Modha;,citation_author=Prasenjit Majumder;,citation_author=Daksh Patel;,citation_author=Mohana Dave;,citation_author=Chintak Mandlia;,citation_author=Aditya Patel;,citation_publication_date=2019;,citation_cover_date=2019;,citation_year=2019;,citation_doi=10.1145/3368567.3368584;,citation_isbn=978-1-4503-7750-8;,citation_conference_title=Proceedings of the 11th annual meeting of the forum for information retrieval evaluation;,citation_conference=Association for Computing Machinery;,citation_series_title=Fire ’19;">
+<meta name="citation_reference" content="citation_title=Are Large Language Models Reliable Argument Quality Annotators?;,citation_abstract=Evaluating the quality of arguments is a crucial aspect of any system leveraging argument mining. However, it is a challenge to obtain reliable and consistent annotations regarding argument quality, as this usually requires domain-specific expertise of the annotators. Even among experts, the assessment of argument quality is often inconsistent due to the inherent subjectivity of this task. In this paper, we study the potential of using state-of-the-art large language models (LLMs) as proxies for argument quality annotators. To assess the capability of LLMs in this regard, we analyze the agreement between model, human expert, and human novice annotators based on an established taxonomy of argument quality dimensions. Our findings highlight that LLMs can produce consistent annotations, with a moderately high agreement with human experts across most of the quality dimensions. Moreover, we show that using LLMs as additional annotators can significantly improve the agreement between annotators. These results suggest that LLMs can serve as a valuable tool for automated argument quality assessment, thus streamlining and accelerating the evaluation of large argument datasets.;,citation_author=Nailia Mirzakhmedova;,citation_author=Marcel Gohsen;,citation_author=Chia Hao Chang;,citation_author=Benno Stein;,citation_editor=Philipp Cimiano;,citation_editor=Anette Frank;,citation_editor=Michael Kohlhase;,citation_editor=Benno Stein;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_doi=10.1007/978-3-031-63536-6_8;,citation_isbn=978-3-031-63536-6;,citation_language=en-US;,citation_conference_title=Robust Argumentation Machines;,citation_conference=Springer Nature Switzerland;">
+<meta name="citation_reference" content="citation_title=Handbuch Bürgerbeteiligung - Verfahren und Akteure, Chancen und Grenzen;,citation_author=Patrizia Nanz;,citation_author=Miriam Fritsche;,citation_publication_date=2012;,citation_cover_date=2012;,citation_year=2012;,citation_isbn=978-3-8389-0200-5;,citation_volume=1200;,citation_series_title=Bpb Schriftenreihe;">
+<meta name="citation_reference" content="citation_title=Family Disputes: Diversity in Defining and Measuring Deliberation;,citation_abstract=Interdisciplinary deliberative research has grown tremendously over the last decade. Theorists are attending more carefully to the findings of empirical research. And empiricists are framing their research in ways that are tailored to track normative-theoretical concerns. The recent surge in empirical work on deliberation, however, has led to a huge proliferation of research designs, general measurement strategies, operational criteria, and even definitions of the phenomenon. The diversity in these approaches has become sufficiently great that it seems worthwhile to step back and take stock lest the expanding deliberative research community dissipate its energies in an ironic lack of effective communication across theoretical and methodological approaches. I survey the main sources of theoretical diversity among normative theories of deliberation, along with the diversity of basic strategies for measuring deliberation that follow from them.;,citation_author=Michael A. Neblo;,citation_publication_date=2011-01;,citation_cover_date=2011-01;,citation_year=2011;,citation_issue=4;,citation_doi=10.1002/j.1662-6370.2007.tb00088.x;,citation_issn=1424-7755;,citation_volume=13;,citation_journal_title=Swiss Political Science Review;">
+<meta name="citation_reference" content="citation_title=Decoding Fake News and Hate Speech: A Survey of Explainable AI Techniques;,citation_abstract=This survey emphasizes the significance of Explainable AI (XAI) techniques in detecting hateful speech and misinformation/Fake news. It explores recent trends in detecting these phenomena, highlighting current research that reveals a synergistic relationship between them. Additionally, it presents recent trends in the use of XAI methods to mitigate the occurrences of hateful land Fake contents in conversations. The survey reviews state-of-the-art XAI approaches, algorithms, modeling datasets, as well as the evaluation metrics leveraged for assessing model interpretability, and thus provides a comprehensive summary table of the literature surveyed and relevant datasets. It concludes with an overview of key observations, offering insights into the prominent model explainability methods used in hate speech and misinformation detection. The research strengths, limitations are also presented, as well as perspectives and suggestions for future directions in this research domain.;,citation_author=Mikel K. Ngueajio;,citation_author=Saurav Aryal;,citation_author=Marcellin Atemkeng;,citation_author=Gloria Washington;,citation_author=Danda Rawat;,citation_publication_date=2025-02;,citation_cover_date=2025-02;,citation_year=2025;,citation_issue=7;,citation_doi=10.1145/3711123;,citation_issn=0360-0300;,citation_volume=57;,citation_journal_title=ACM Comput. Surv.;">
+<meta name="citation_reference" content="citation_title=Generative AI for Hate Speech Detection: Evaluation and Findings;,citation_abstract=Automatic hate speech detection using deep neural models is hampered by the scarcity of labeled datasets, leading to poor generalization. To mitigate this problem, generative AI has been utilized to generate large amounts of synthetic hate speech sequences from available labeled examples, leveraging the generated data in finetuning large pre-trained language models (LLMs). In this chapter, we provide a review of relevant methods, experimental setups and evaluation of this approach. In addition to general LLMs, such as BERT, RoBERTa and ALBERT, we apply and evaluate the impact of train set augmentation with generated data using LLMs that have been already adapted for hate detection, including RoBERTa-Toxicity, HateBERT, HateXplain, ToxDect, and ToxiGen. An empirical study corroborates our previous findings, showing that this approach improves hate speech generalization, boosting recall performance across data distributions. In addition, we explore and compare the performance of the finetuned LLMs with zero-shot hate detection using a GPT-3.5 model. Our results demonstrate that while better generalization is achieved using the GPT-3.5 model, it achieves mediocre recall and low precision on most datasets. It is an open question whether the sensitivity of models such as GPT-3.5, and onward, can be improved using similar techniques of text generation.;,citation_author=Sagi Pendzel;,citation_author=Tomer Wullach;,citation_author=Amir Adler;,citation_author=Einat Minkov;,citation_publication_date=2023-11;,citation_cover_date=2023-11;,citation_year=2023;,citation_fulltext_html_url=https://arxiv.org/abs/2311.09993;,citation_doi=10.48550/arXiv.2311.09993;,citation_publisher=arXiv;">
+<meta name="citation_reference" content="citation_title=Respectful or Toxic? Using Zero-Shot Learning with Language Models to Detect Hate Speech;,citation_abstract=Hate speech detection faces two significant challenges: 1) the limited availability of labeled data and 2) the high variability of hate speech across different contexts and languages. Prompting brings a ray of hope to these challenges. It allows injecting a model with task-specific knowledge without relying on labeled data. This paper explores zero-shot learning with prompting for hate speech detection. We investigate how well zero-shot learning can detect hate speech in 3 languages with limited labeled data. We experiment with various large language models and verbalizers on 8 benchmark datasets. Our findings highlight the impact of prompt selection on the results. They also suggest that prompting, specifically with recent large language models, can achieve performance comparable to and surpass fine-tuned models, making it a promising alternative for under-resourced languages. Our findings highlight the potential of prompting for hate speech detection and show how both the prompt and the model have a significant impact on achieving more accurate predictions in this task.;,citation_author=Flor Miriam Plaza-del-arco;,citation_author=Debora Nozza;,citation_author=Dirk Hovy;,citation_editor=Yi-ling Chung;,citation_editor=Paul Röttger;,citation_editor=Debora Nozza;,citation_editor=Zeerak Talat;,citation_editor=Aida Mostafazadeh Davani;,citation_publication_date=2023-07;,citation_cover_date=2023-07;,citation_year=2023;,citation_doi=10.18653/v1/2023.woah-1.6;,citation_conference_title=The 7th Workshop on Online Abuse and Harms (WOAH);,citation_conference=Association for Computational Linguistics;">
+<meta name="citation_reference" content="citation_title=LLM generated responses to mitigate the impact of hate speech;,citation_abstract=In this study, we explore the use of Large Language Models (LLMs) to counteract hate speech. We conducted the first real-life A/B test assessing the effectiveness of LLM-generated counter-speech. During the experiment, we posted 753 automatically generated responses aimed at reducing user engagement under tweets that contained hate speech toward Ukrainian refugees in Poland.Our work shows that interventions with LLM-generated responses significantly decrease user engagement, particularly for original tweets with at least ten views, reducing it by over 20%. This paper outlines the design of our automatic moderation system, proposes a simple metric for measuring user engagement and details the methodology of conducting such an experiment. We discuss the ethical considerations and challenges in deploying generative AI for discourse moderation.;,citation_author=Jakub Podolak;,citation_author=Szymon Łukasik;,citation_author=Paweł Balawender;,citation_author=Jan Ossowski;,citation_author=Jan Piotrowski;,citation_author=Katarzyna Bakowicz;,citation_author=Piotr Sankowski;,citation_editor=Yaser Al-Onaizan;,citation_editor=Mohit Bansal;,citation_editor=Yun-Nung Chen;,citation_publication_date=2024-11;,citation_cover_date=2024-11;,citation_year=2024;,citation_doi=10.18653/v1/2024.findings-emnlp.931;,citation_conference_title=Findings of the Association for Computational Linguistics: EMNLP 2024;,citation_conference=Association for Computational Linguistics;">
+<meta name="citation_reference" content="citation_title=Explainable AI for Hate Speech Moderation: A Stakeholder-Centered and Socially Grounded Review;,citation_abstract=The growing use of automated hate speech detection systems has sparked significant concern across technical, ethical, and sociopolitical dimensions. While recent advances in natural language processing and machine learning have improved classification;,citation_author=Muhammad Deedahwar Mazhar Qureshi;,citation_author=M. Atif Qureshi;,citation_author=Wael Rashwan;,citation_publication_date=2025;,citation_cover_date=2025;,citation_year=2025;,citation_doi=10.36227/techrxiv.175440435.54783623/v1;,citation_publisher=TechRxiv;">
+<meta name="citation_reference" content="citation_title=On Zero-Shot Counterspeech Generation by LLMs;,citation_abstract=With the emergence of numerous Large Language Models (LLM), the usage of such models in various Natural Language Processing (NLP) applications is increasing extensively. Counterspeech generation is one such key task where efforts are made to develop generative models by fine-tuning LLMs with hatespeech - counterspeech pairs, but none of these attempts explores the intrinsic properties of large language models in zero-shot settings. In this work, we present a comprehensive analysis of the performances of four LLMs namely GPT-2, DialoGPT, ChatGPT and FlanT5 in zero-shot settings for counterspeech generation, which is the first of its kind. For GPT-2 and DialoGPT, we further investigate the deviation in performance with respect to the sizes (small, medium, large) of the models. On the other hand, we propose three different prompting strategies for generating different types of counterspeech and analyse the impact of such strategies on the performance of the models. Our analysis shows that there is an improvement in generation quality for two datasets (17%), however the toxicity increase (25%) with increase in model size. Considering type of model, GPT-2 and FlanT5 models are significantly better in terms of counterspeech quality but also have high toxicity as compared to DialoGPT. ChatGPT are much better at generating counter speech than other models across all metrics. In terms of prompting, we find that our proposed strategies help in improving counter speech generation across all the models.;,citation_author=Punyajoy Saha;,citation_author=Aalok Agrawal;,citation_author=Abhik Jana;,citation_author=Chris Biemann;,citation_author=Animesh Mukherjee;,citation_editor=Nicoletta Calzolari;,citation_editor=Min-Yen Kan;,citation_editor=Veronique Hoste;,citation_editor=Alessandro Lenci;,citation_editor=Sakriani Sakti;,citation_editor=Nianwen Xue;,citation_publication_date=2024-05;,citation_cover_date=2024-05;,citation_year=2024;,citation_conference_title=Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024);,citation_conference=ELRA and ICCL;">
+<meta name="citation_reference" content="citation_title=A Survey on Hate Speech Detection using Natural Language Processing;,citation_abstract=This paper presents a survey on hate speech detection. Given the steadily growing body of social media content, the amount of online hate speech is also increasing. Due to the massive scale of the web, methods that automatically detect hate speech are required. Our survey describes key areas that have been explored to automatically recognize these types of utterances using natural language processing. We also discuss limits of those approaches.;,citation_author=Anna Schmidt;,citation_author=Michael Wiegand;,citation_editor=Lun-Wei Ku;,citation_editor=Cheng-Te Li;,citation_publication_date=2017-04;,citation_cover_date=2017-04;,citation_year=2017;,citation_doi=10.18653/v1/W17-1101;,citation_conference_title=Proceedings of the Fifth International Workshop on Natural Language Processing for Social Media;,citation_conference=Association for Computational Linguistics;">
+<meta name="citation_reference" content="citation_title=Surprising efficacy of fine-tuned transformers for fact-checking over larger language models;,citation_abstract=In this paper, we explore the challenges associated with establishing an end-to-end fact-checking pipeline in a real-world context, covering over 90 languages. Our real-world experimental benchmarks demonstrate that fine-tuning Transformer models specifically for fact-checking tasks, such as claim detection and veracity prediction, provide superior performance over large language models (LLMs) like GPT-4, GPT-3.5-Turbo, and Mistral-7b. However, we illustrate that LLMs excel in generative tasks such as question decomposition for evidence retrieval. Through extensive evaluation, we show the efficacy of fine-tuned models for fact-checking in a multilingual setting and complex claims that include numerical quantities.;,citation_author=Vinay Setty;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_doi=10.1145/3626772.3661361;,citation_isbn=979-8-4007-0431-4;,citation_conference_title=Proceedings of the 47th international ACM SIGIR conference on research and development in information retrieval;,citation_conference=Association for Computing Machinery;,citation_series_title=Sigir ’24;">
+<meta name="citation_reference" content="citation_title=Ethische Aspekte von Cognitive Enhancement;,citation_author=Sebastian Cacean;,citation_editor=Giselher Spitzer;,citation_editor=Elk Franke;,citation_publication_date=2012;,citation_cover_date=2012;,citation_year=2012;,citation_isbn=978-3-86884-015-5;,citation_language=de-DE;,citation_inbook_title=Sport, Doping und Enhancement Ergebnisse und Denkanstöße;">
+<meta name="citation_reference" content="citation_title=Measuring Political Deliberation: A Discourse Quality Index;,citation_abstract=In this paper, we develop a discourse quality index (DQI) that serves as a quantitative measure of discourse in deliberation. The DQI is rooted in Habermas’ discourse ethics and provides an accurate representation of the most important principles underlying deliberation. At the same time, the DQI can be shown to be a reliable measurement instrument due to its focus on observable behavior and its detailed coding instructions. We illustrate the DQI for a parliamentary debate in the British House of Commons. We show that the DQI yields reliable data and we discuss how these data could be used in subsequent analysis. We conclude by discussing some limitations of the DQI and by identifying some areas in which it could prove useful.;,citation_author=Marco R. Steenbergen;,citation_author=André Bächtiger;,citation_author=Markus Spörndli;,citation_author=Jürg Steiner;,citation_publication_date=2003;,citation_cover_date=2003;,citation_year=2003;,citation_issue=1;,citation_doi=10.1057/palgrave.cep.6110002;,citation_issn=1472-4790, 1740-388X;,citation_volume=1;,citation_language=en-US;,citation_journal_title=Comparative European Politics;">
+<meta name="citation_reference" content="citation_title=Deliberative politics in action: Analyzing parliamentary discourse;,citation_author=Jürg Steiner;,citation_author=André Bächtiger;,citation_author=Marco Steenbergen;,citation_author=Markus Sprörndli;,citation_publication_date=2004;,citation_cover_date=2004;,citation_year=2004;,citation_isbn=978-0-521-53564-9;,citation_series_title=Theories of institutional design;">
+<meta name="citation_reference" content="citation_title=AI can help humans find common ground in democratic deliberation;,citation_abstract=Finding agreement through a free exchange of views is often difficult. Collective deliberation can be slow, difficult to scale, and unequally attentive to different voices. In this study, we trained an artificial intelligence (AI) to mediate human deliberation. Using participants’ personal opinions and critiques, the AI mediator iteratively generates and refines statements that express common ground among the group on social or political issues. Participants (N = 5734) preferred AI-generated statements to those written by human mediators, rating them as more informative, clear, and unbiased. Discussants often updated their views after the deliberation, converging on a shared perspective. Text embeddings revealed that successful group statements incorporated dissenting voices while respecting the majority position. These findings were replicated in a virtual citizens’ assembly involving a demographically representative sample of the UK population.;,citation_author=Michael Henry Tessler;,citation_author=Michiel A. Bakker;,citation_author=Daniel Jarrett;,citation_author=Hannah Sheahan;,citation_author=Martin J. Chadwick;,citation_author=Raphael Koster;,citation_author=Georgina Evans;,citation_author=Lucy Campbell-Gillingham;,citation_author=Tantum Collins;,citation_author=David C. Parkes;,citation_author=Matthew Botvinick;,citation_author=Christopher Summerfield;,citation_publication_date=2024-10;,citation_cover_date=2024-10;,citation_year=2024;,citation_issue=6719;,citation_doi=10.1126/science.adq2852;,citation_volume=386;,citation_journal_title=Science;,citation_publisher=American Association for the Advancement of Science;">
+<meta name="citation_reference" content="citation_title=When Do Parties Lie? Misinformation and Radical-Right Populism Across 26 Countries;,citation_abstract=The spread of misinformation has emerged as a global concern. Academic attention has recently shifted to emphasize the role of political elites as drivers of misinformation. Yet, little is known of the relationship between party politics and the spread of misinformation—in part due to a dearth of cross-national empirical data needed for comparative study. This article examines which parties are more likely to spread misinformation, by drawing on a comprehensive database of 32M tweets from parliamentarians in 26 countries, spanning 6 years and several election periods. The dataset is combined with external databases such as Parlgov and V-Dem, linking the spread of misinformation to detailed information about political parties and cabinets, thus enabling a comparative politics approach to misinformation. Using multilevel analysis with random country intercepts, we find that radical-right populism is the strongest determinant for the propensity to spread misinformation. Populism, left-wing populism, and right-wing politics are not linked to the spread of misinformation. These results suggest that political misinformation should be understood as part and parcel of the current wave of radical right populism, and its opposition to liberal democratic institution.;,citation_author=Petter Törnberg;,citation_author=Juliana Chueri;,citation_publication_date=2025-01;,citation_cover_date=2025-01;,citation_year=2025;,citation_doi=10.1177/19401612241311886;,citation_issn=1940-1612;,citation_language=en-US;,citation_journal_title=The International Journal of Press/Politics;,citation_publisher=SAGE Publications Inc;">
+<meta name="citation_reference" content="citation_title=Generative large language models in automated fact-checking: A survey;,citation_author=Ivan Vykopal;,citation_author=Matúš Pikuliak;,citation_author=Simon Ostermann;,citation_author=Marián Šimko;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_doi=10.48550/arXiv.2407.02351;">
+<meta name="citation_reference" content="citation_title=Argument Quality Assessment in the Age of Instruction-Following Large Language Models;,citation_abstract=The computational treatment of arguments on controversial issues has been subject to extensive NLP research, due to its envisioned impact on opinion formation, decision making, writing education, and the like. A critical task in any such application is the assessment of an argument‘s quality - but it is also particularly challenging. In this position paper, we start from a brief survey of argument quality research, where we identify the diversity of quality notions and the subjectiveness of their perception as the main hurdles towards substantial progress on argument quality assessment. We argue that the capabilities of instruction-following large language models (LLMs) to leverage knowledge across contexts enable a much more reliable assessment. Rather than just fine-tuning LLMs towards leaderboard chasing on assessment tasks, they need to be instructed systematically with argumentation theories and scenarios as well as with ways to solve argument-related problems. We discuss the real-world opportunities and ethical issues emerging thereby.;,citation_author=Henning Wachsmuth;,citation_author=Gabriella Lapesa;,citation_author=Elena Cabrio;,citation_author=Anne Lauscher;,citation_author=Joonsuk Park;,citation_author=Eva Maria Vecchi;,citation_author=Serena Villata;,citation_author=Timon Ziegenbein;,citation_editor=Nicoletta Calzolari;,citation_editor=Min-Yen Kan;,citation_editor=Veronique Hoste;,citation_editor=Alessandro Lenci;,citation_editor=Sakriani Sakti;,citation_editor=Nianwen Xue;,citation_publication_date=2024-05;,citation_cover_date=2024-05;,citation_year=2024;,citation_conference_title=Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024);,citation_conference=ELRA and ICCL;">
+<meta name="citation_reference" content="citation_title=Overview of the GermEval 2018 Shared Task on the Identification of Offensive Language;,citation_abstract=We present the pilot edition of the GermEval Shared Task on the Identification of Offensive Language. This shared task deals with the classification of German tweets from Twitter. It comprises two tasks, a coarse-grained binary classification task and a fine-grained multi-class classification task. The shared task had 20 participants submitting 51 runs for the coarse-grained task and 25 runs for the fine-grained task. Since this is a pilot task, we describe the process of extracting the raw-data for the data collection and the annotation schema. We evaluate the results of the systems submitted to the shared task. The shared task homepage can be found at https://projects.cai. fbi.h-da.de/iggsa/;,citation_author=Michael Wiegand;,citation_author=Melanie Siegel;,citation_author=Josef Ruppenhofer;,citation_publication_date=2018;,citation_cover_date=2018;,citation_year=2018;,citation_language=de-DE;,citation_journal_title=ISBN;,citation_publisher=Verlag der Österreichischen Akademie der Wissenschaften;">
+<meta name="citation_reference" content="citation_title=Politische Partizipation;,citation_abstract=In der Politikwissenschaft hat der Forschungszweig Partizipationsforschung die politische Beteiligung (Partizipation) zum Gegenstand. Unter politische Partizipation fallen jene Verhaltensweisen von Bürger/innen, die als Gruppe oder allein freiwillig Einfluss auf politische Entscheidungen auf verschiedenen Ebenen des politischen Systems (Kommune, Land, Bund und Europa) ausüben wollen. Man unterscheidet konventionelle (verfasste, gesetzlich garantierte und geregelte) von unkonventionellen (nichtverfassten) Formen der politischen Partizipation. Durch eine inzwischen jahrzehntealte Partizipationsforschung wurden Kriterien entwickelt, die unterschiedliche Beteiligungsformen ausweisen. Niedermayer unterteilt die Gesamtheit partizipativer Aktivitäten der Bürger in folgende sechs Formen: a) Teilnahme an Wahlen und Abstimmungen; b) parteibezogene Aktivitäten; c) auf Gemeinde, Wahlkampf und Politiker bezogene Aktivitäten; d) legaler Protest; e) ziviler Protest und f) politische Gewalt.;,citation_author=Wichard Woyke;,citation_editor=Uwe Andersen;,citation_editor=Jörg Bogumil;,citation_editor=Stefan Marschall;,citation_editor=Wichard Woyke;,citation_publication_date=2021;,citation_cover_date=2021;,citation_year=2021;,citation_doi=10.1007/978-3-658-23666-3_112;,citation_isbn=978-3-658-23666-3;,citation_language=de-DE;,citation_inbook_title=Handwörterbuch des politischen Systems der&nbsp;Bundesrepublik Deutschland;">
+<meta name="citation_reference" content="citation_title=The Unseen Targets of Hate: A Systematic Review of Hateful Communication Datasets;,citation_abstract=Machine learning (ML)-based content moderation tools are essential to keep online spaces free from hateful communication. Yet ML tools can only be as capable as the quality of the data they are trained on allows them. While there is increasing evidence that they underperform in detecting hateful communications directed towards specific identities and may discriminate against them, we know surprisingly little about the provenance of such bias. To fill this gap, we present a systematic review of the datasets for the automated detection of hateful communication introduced over the past decade, and unpack the quality of the datasets in terms of the identities that they embody: those of the targets of hateful communication that the data curators focused on, as well as those unintentionally included in the datasets. We find, overall, a skewed representation of selected target identities and mismatches between the targets that research conceptualizes and ultimately includes in datasets. Yet, by contextualizing these findings in the language and location of origin of the datasets, we highlight a positive trend towards the broadening and diversification of this research space.;,citation_author=Zehui Yu;,citation_author=Indira Sen;,citation_author=Dennis Assenmacher;,citation_author=Mattia Samory;,citation_author=Leon Fröhling;,citation_author=Christina Dahn;,citation_author=Debora Nozza;,citation_author=Claudia Wagner;,citation_publication_date=2024-06;,citation_cover_date=2024-06;,citation_year=2024;,citation_doi=10.1177/08944393241258771;,citation_issn=0894-4393;,citation_language=en-US;,citation_journal_title=Social Science Computer Review;,citation_publisher=SAGE Publications Inc;">
+<meta name="citation_reference" content="citation_title=Towards LLM-based fact verification on news claims with a hierarchical step-by-step prompting method;,citation_abstract=While large pre-trained language models (LLMs) have shown their impressive capabilities in various NLP tasks, they are still underexplored in the misinformation domain. In this paper, we examine LLMs with in-context learning (ICL) for news claim verification, and find that only with 4-shot demonstration examples, the performance of several prompting methods can be comparable with previous supervised models. To further boost performance, we introduce a Hierarchical Step-by-Step (HiSS) prompting method which directs LLMs to separate a claim into several subclaims and then verify each of them via multiple questions-answering steps progressively. Experiment results on two public misinformation datasets show that HiSS prompting outperforms state-of-the-art fully-supervised approach and strong few-shot ICL-enabled baselines.;,citation_author=Xuan Zhang;,citation_author=Wei Gao;,citation_editor=Jong C. Park;,citation_editor=Yuki Arase;,citation_editor=Baotian Hu;,citation_editor=Wei Lu;,citation_editor=Derry Wijaya;,citation_editor=Ayu Purwarianti;,citation_editor=Adila Alfa Krisnadhi;,citation_publication_date=2023-11;,citation_cover_date=2023-11;,citation_year=2023;,citation_doi=10.18653/v1/2023.ijcnlp-main.64;,citation_conference_title=Proceedings of the 13th international joint conference on natural language processing and the 3rd conference of the asia-pacific chapter of the association for computational linguistics (volume 1: Long papers);,citation_conference=Association for Computational Linguistics;">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./empfehlungen.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Herausforderungen und Empfehlungen</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Suchen" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Chancen von KI zur Stärkung deliberativer Kultur</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/debatelab/kideku-report" title="Quellcode" class="quarto-navigation-tool px-1" aria-label="Quellcode"><i class="bi bi-github"></i></a>
+    <a href="./Chancen-von-KI-zur-Stärkung-deliberativer-Kultur.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=|url|" title="LinkedIn" class="quarto-navigation-tool px-1" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Suchen"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Überblick</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./einleitung.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./einsatzszenarien.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Einsatzszenarien von KI zur Stärkung deliberativer Kultur</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./projektergebnisse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Projektergebnisse</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./empfehlungen.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Herausforderungen und Empfehlungen</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Literatur</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#rolle-von-vertrauen" id="toc-rolle-von-vertrauen" class="nav-link active" data-scroll-target="#rolle-von-vertrauen"><span class="header-section-number">4.1</span> Rolle von Vertrauen</a></li>
+  <li><a href="#evaluierung-und-optimierung-von-ki-tools" id="toc-evaluierung-und-optimierung-von-ki-tools" class="nav-link" data-scroll-target="#evaluierung-und-optimierung-von-ki-tools"><span class="header-section-number">4.2</span> Evaluierung und Optimierung von KI-Tools</a>
+  <ul class="collapse">
+  <li><a href="#herausforderungen-bei-der-optimierung-von-ki-tools" id="toc-herausforderungen-bei-der-optimierung-von-ki-tools" class="nav-link" data-scroll-target="#herausforderungen-bei-der-optimierung-von-ki-tools"><span class="header-section-number">4.2.1</span> Herausforderungen bei der Optimierung von KI-Tools</a></li>
+  <li><a href="#lösungsansätze" id="toc-lösungsansätze" class="nav-link" data-scroll-target="#lösungsansätze"><span class="header-section-number">4.2.2</span> Lösungsansätze</a></li>
+  </ul></li>
+  <li><a href="#praktische-herausforderungen" id="toc-praktische-herausforderungen" class="nav-link" data-scroll-target="#praktische-herausforderungen"><span class="header-section-number">4.3</span> Praktische Herausforderungen</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-empfehlungen" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Herausforderungen und Empfehlungen</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Die Integration von LLM-basierten Tools in bestehende Prozesse stellt Beteiligte und Betroffene vor große Herausforderungen. Die Technologie ist nicht nur vergleichsweise neu und komplex, sondern entwickelt sich rasant weiter. Es ist noch nicht absehbar, welche gesellschaftlichen und wirtschaftlichen Auswirkungen Sprachmodelle und KI im Allgemeinen haben werden. Es ist daher verständlich, dass viele Menschen und Organisationen mit Unsicherheit und Skepsis gegenüber KI reagieren. Das gilt auch für die Verwendung von KI durch staatliche und zivilgesellschaftliche Akteur:innen im Demokratiebereich. In diesem abschließenden Kapitel wollen wir einige Überlegungen und Empfehlungen formulieren, die wir für wichtig halten, um die Chancen von KI zu nutzen und die Risiken zu minimieren. Dabei geht es nicht nur um technische Fragen, sondern auch um ethische, rechtliche und gesellschaftliche Aspekte. Diese Überlegungen basieren auf informellen Gesprächen mit Akteur:innen aus dem zivilgesellschaftlichen Bereich, auf der Analyse von Studien und Berichten sowie auf unseren Erfahrungen aus dem KIdeKu-Projekt. Sie sind keineswegs abschließend, sondern sollen vielmehr Anregungen und Impulse geben, um die Diskussion über KI im Demokratiebereich weiterzuführen.</p>
+<section id="rolle-von-vertrauen" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="rolle-von-vertrauen"><span class="header-section-number">4.1</span> Rolle von Vertrauen</h2>
+<p>Der Einsatz von KI-basierten Applikationen kann nur dann unsere demokratische Kultur stärken, wenn diese von Bürger:innen genutzt werden, was wiederum ein hinreichend großes Vertrauen in die Sicherheit und Zuverlässigkeit solcher Anwendungen voraussetzt. Im Folgenden werden einige allgemeine Überlegungen zur Rolle von Transparenz und Zuverlässigkeit für das Vertrauen dargestellt.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Warum sind Vertrauen und Akzeptanz im Kontext der KI-gestützten Deliberation so wichtig? Deliberative Kontexte zeichnen sich durch ihre besondere Rolle für die demokratische Teilhabe aus. In ihnen üben Bürger:innen ihre politischen Rechte aus und nehmen mittelbar oder unmittelbar an der politischen Willensbildung teil, indem sie beispielsweise ihre Überzeugungen im öffentlichen Diskurs ausdrücken oder politische Selbstwirksamkeit in Beteiligungsformaten wie Bürgerräten erfahren. Daher ist zu erwarten, dass Bürger:innen auf (wahrgenommene) Einschränkungen dieser Teilhaberechte sehr sensibel reagieren. Bei KI-gestützter Deliberation geht es also nicht nur darum, dass Nutzer:innen mit einem bestimmten KI-Tool unzufrieden sind, wenn etwas nicht richtig funktioniert, und sie als Konsequenz zum Produkt eines Konkurrenten wechseln. Viel gewichtiger ist die Gefahr, dass sie sich in der Ausübung ihrer bürgerlichen Teilhaberechte eingeschränkt fühlen. Sie könnten sich durch den Einsatz von KI ausgeschlossen, missverstanden oder anderweitig ungerecht behandelt fühlen. Im schlimmsten Fall schwächen solche Erfahrungen nicht nur das Vertrauen in KI-basierte Deliberation selbst, sondern auch das Vertrauen in Demokratie.</p>
+<!-- Verstärkung von ungleicher Teilhabe -->
+<p>Eine besondere Gefahr besteht darin, dass KI-gestützte Deliberation neue Ungleichheiten in der politischen Teilhabe erzeugen kann. Wenn technische Lösungen vor allem denjenigen zugutekommen, die über digitale Kompetenzen, Vertrauen in KI oder entsprechende Ressourcen verfügen, kann politische Teilhabe insgesamt zwar wachsen, aber auch ungleicher verteilt werden.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Wir müssen deshalb darauf achten, dass die Einführung deliberativer KI nicht zu einem neuen „deliberative divide“ führt.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<!-- Skalierungsversuchung -->
+<p>Eine weitere Herausforderung könnte man als „Skalierungsversuchung“ bezeichnen.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Gerade Beteiligungsformate könnten durch den Einsatz von KI mit deutlich größeren Teilnehmer:innenzahlen durchgeführt werden, als es bislang möglich war.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> Funktionierende Beteiligungsverfahren sind in der Regel sehr aufwendig: Bürger:innen müssen über teilweise komplexe Fachthemen informiert werden; ihnen wird oft die Möglichkeit gegeben, Argumente und Einwände auszutauschen; sie drücken ihre Standpunkte aus, die so aggregiert werden müssen, dass der Output der Beteiligung als Entscheidungsgrundlage für Politiker:innen dienen kann. Der Aufwand für die Organisation und Moderation solcher Formate sowie für die Analyse der Beiträge nimmt dementsprechend mit steigender Teilnehmer:innenzahl sehr schnell zu. KI, so die Hoffnung, kann viele dieser Aufgaben unterstützen oder gar übernehmen.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> Die Skalierbarkeit eines Verfahrens ist jedoch keine Garantie für dessen demokratische Legitimität. Vielmehr gilt es zu bedenken, dass alle normativen Anforderungen an solche Prozesse weiterhin erfüllt sein müssen. Die Ergebnisse von Beteiligungsverfahren sollen in die politische Willensbildung einfließen, die nur dann legitimiert sind, wenn das Verfahren selbst hinreichend legitimiert ist. Dabei geht es zum Beispiel um gleiche Teilhabe, die Authentizität von Beiträgen, die Qualität des Outputs und die Neutralität der Moderation und Aggregation von Beiträgen. Ob die Erfüllung solcher normativen Anforderungen genauso gut skaliert wie die technischen Möglichkeiten, ist eine offene Frage.</p>
+<!-- Vertrauen in was? -->
+<p>Um welches Vertrauen geht es hier? Neben dem bereits beschriebenen Vertrauen in die Einhaltung politischer Rechte sind vor allem Datensicherheit sowie das Vertrauen in die Korrektheit und Unvoreingenommenheit von KI-generierten Inhalten und Analysen zentral.</p>
+<!-- bsp. Toxisiche Sprache -->
+<p>Diese Aspekte hängen je nach spezifischem Einsatzszenario voneinander ab. Nehmen wir als Beispiel die Detektion toxischer Sprache: Bei der Kategorisierung toxischer Sprache kann es zu unterschiedlichen Arten von Fehlern kommen.</p>
+<p>Eine falsch positive Detektion ist die Kategorisierung von Äußerungen als toxisch, die es gar nicht sind. Dient die Detektion toxischer Sprache beispielsweise der Moderation von Online-Diskussionen, könnte eine falsch positive Detektion dazu führen, dass bestimmte Beiträge gelöscht oder Nutzer:innen gesperrt werden, obwohl diese Beiträge eigentlich nicht toxisch sind. Dies kann zu einer wahrgenommenen Einschränkung der Meinungsfreiheit und zu einer Ausgrenzung bestimmter Gruppen führen, wenn die Fehldetektionen systematisch stärker bei diesen auftreten. So zeigen zum Beispiel <span class="citation" data-cites="giraud_learning_2025"><span class="nocase">Giraud u.&nbsp;a.</span> (<a href="references.html#ref-giraud_learning_2025" role="doc-biblioref">2025</a>)</span>, dass manche Modelle höhere Raten falsch positiver Toxizitätsdetektion bei Mitgliedern der afroamerikanisch-englischen Sprachgemeinschaft aufweisen. Als mögliche Ursache nennen sie einen Bias in den Trainingsdaten aufgrund fehlender Diversität unter den Annotator:innen.</p>
+<p>Eine falsch negative Detektion ist die Nichterkennung von Äußerungen, die tatsächlich toxisch sind. In diesem Fall könnte es vorkommen, dass toxische Beiträge nicht moderiert werden und dadurch weiterhin Schaden anrichten. Im Extremfall kommt es zur Sichtbarkeit und Verbreitung von Inhalten, die Straftatbestände erfüllen. Aber auch wenn es nicht um strafrechtlich relevante Inhalte geht, können unentdeckte toxische Beiträge dazu führen, dass die Erreichung deliberativer Ideale wie Respekt, Inklusion und rationale Diskussion erschwert wird, weil sich Menschen durch solche Beiträge angegriffen, verletzt oder ausgeschlossen fühlen und infolge dessen weniger bereit zur Teilnahme an deliberativen Prozessen sind.</p>
+<p>Eine hinreichend hohe Ergebniskorrektheit von KI-Systemen spielt damit eine zentrale Rolle für das Vertrauen in KI-gestützte Deliberation. Darüber hinaus ist diese Art von Zuverlässigkeit eine Voraussetzung für die Erreichung der genannten deliberativen Ziele (vgl. <a href="einsatzszenarien.html#sec-ziele" class="quarto-xref"><span>Kapitel 2.2</span></a>). Im Folgenden konzentrieren wir uns daher auf die damit zusammenhängenden Herausforderungen und besprechen Lösungsansätze zur Steigerung der Zuverlässigkeit von KI-Tools.</p>
+</section>
+<section id="evaluierung-und-optimierung-von-ki-tools" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="evaluierung-und-optimierung-von-ki-tools"><span class="header-section-number">4.2</span> Evaluierung und Optimierung von KI-Tools</h2>
+<p>Wie stellen wir nun sicher, dass KI-Tools, die in deliberativen Kontexten eingesetzt werden, hinreichend zuverlässig bezüglich der Korrektheit ihrer Ergebnisse sind? Eine wichtige Rolle spielt die <em>systematische</em> Evaluierung. Ohne zu wissen, wie zuverlässig ein KI-Tool in einem bestimmten Kontext abschneidet, können wir nicht beurteilen, ob es für diesen Kontext hinreichend zuverlässig ist. Die Ergebnisse systematischer Evaluierungen bilden außerdem die Grundlage für eine Optimierung der Zuverlässigkeit von KI-Tools.</p>
+<!-- Optimierung -->
+<p>Die Leistungsfähigkeit eines LLM-basierten KI-Tools hängt von vielen Faktoren ab. Dazu zählen das verwendete Sprachmodell, die Modellparameter und die gesamte Pipeline, inklusive der verwendeten Prompts, in die das Modell eingebunden ist (im Engl. <em>scaffolding</em> oder <em>harness</em>). Damit gibt es auch eine Vielzahl von Faktoren, die variiert werden können, um die Zuverlässigkeit eines KI-Tools zu steigern.</p>
+<p>Die Grundidee einer evaluationsbasierten Optimierung ist dabei sehr einfach: Schneidet die Zuverlässigkeit eines Systems nicht hinreichend zufriedenstellend ab, nimmt man so lange leistungsverbessernde Anpassungen am System vor, bis es hinreichend zuverlässig ist. Ist es möglich, einzelne Komponenten des Systems isoliert zu evaluieren, können diese Anpassungen unter Umständen sehr gezielt vorgenommen werden. Führt diese Optimierungsschleife zu keinem Erfolg oder erfordert die Optimierung zu große Abstriche bezüglich anderer relevanter Faktoren, ist es unter Umständen sinnvoll, auf den Einsatz des KI-Tools zu verzichten.</p>
+<!--- Grundidee Evaluation -->
+<p>Die notwendigen Evaluierungen müssen im folgenden Sinne systematisch erfolgen: Die Ergebnisse einer Evaluation sollen belastbare Schlüsse darüber erlauben, ob ein KI-Tool für einen bestimmten Gegenstandsbereich hinreichend zuverlässig ist oder nicht. In der Regel ist es praktisch nicht möglich, den gesamten Gegenstandsbereich abzutesten. Um Schlüsse auf den gesamten Gegenstandsbereich zuzulassen, müssen die Testfälle damit so ausgewählt werden, dass sie in einer bestimmten Weise repräsentativ für den Gegenstandsbereich sind. Das könnten zum Beispiel eine hinreichend große Menge an Testfällen sein, die die Heterogenität des Gegenstandsbereichs abdecken, oder besonders schwierige Testfälle, die gezielt ausgewählt wurden, um bestimmte relevante Aspekte der Zuverlässigkeit zu testen.</p>
+<p>Darüber hinaus muss die Evaluierung so gestaltet werden, dass sie automatisiert und einfach reproduziert werden kann, damit die oben genannten Optimierungsschleifen praktisch umsetzbar sind. Dafür können beispielsweise vorhandene Testdatensätze verwendet oder eigene durch Menschen oder automatisiert erstellt werden.</p>
+<section id="herausforderungen-bei-der-optimierung-von-ki-tools" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="herausforderungen-bei-der-optimierung-von-ki-tools"><span class="header-section-number">4.2.1</span> Herausforderungen bei der Optimierung von KI-Tools</h3>
+<p>Obwohl die Grundidee einer evaluationsbasierten Optimierung von KI-Tools sehr einfach ist, gibt es eine Reihe von praktischen und prinzipiellen Herausforderungen, die bei der Umsetzung zu beachten sind.</p>
+<p>Zum einen ist die Evaluierung komplexer KI-Pipelines selbst komplex. Zwar lässt sich die Zuverlässigkeit eines KI-Tools als Ganzes evaluieren, um zu beurteilen, ob es für einen bestimmten Gegenstandsbereich hinreichend zuverlässig ist. Will man das KI-Tool jedoch optimieren, ist es hilfreich zu wissen, wo genau in der Pipeline etwas nicht korrekt funktioniert. Bei komplexen Pipelines müssen die einzelnen Komponenten damit unabhängig evaluiert werden, um gezielt Anpassungen vornehmen zu können.</p>
+<p>Nehmen wir als Beispiel die vorgestellte Pipeline des EvidenceSeekers (siehe <a href="projektergebnisse.html#sec-evse" class="quarto-xref"><span>Kapitel 3.2</span></a>). Die Pipeline besteht aus drei Komponenten, die unabhängig voneinander evaluiert werden können: die Disambiguierung, die Extraktion relevanter Textstellen und die Bestätigungsanalyse. Jede Komponente erfüllt eine andere Funktion und kann damit spezifische Fehlerquellen aufweisen.</p>
+<p>Die Verfügbarkeit und Güte geeigneter Testdatensätze beziehungsweise Benchmarks sind eine weitere Herausforderung für die Evaluierung von KI-Tools. Testdatensätze müssen zum einen den anvisierten Gegenstandsbereich adäquat widerspiegeln, um belastbare Schlüsse über die Zuverlässigkeit eines KI-Tools zuzulassen. Zum anderen müssen sie selbst korrekte Labels enthalten.</p>
+<p>Um den Gegenstandsbereich adäquat abzubilden, müssen Testdatensätze so gestaltet sein, dass sie die Heterogenität des Gegenstandsbereiches abdecken. Das bedeutet zum Beispiel, dass sie eine hinreichend große Anzahl an Testfällen enthalten müssen, die die sprachliche und kulturelle Diversität abbilden. Damit dürfen die Testdatensätze auch nicht zu „sauber“ und artifiziell sein. Außerdem sollten sie einen ausgewogenen Anteil an allen relevanten Labels enthalten, damit die Evaluierung nicht durch eine unausgewogene Verteilung der Testfälle verzerrt wird.</p>
+<p>Testdatensätze können von Menschen oder automatisiert erstellt werden. Die menschliche Annotation von Testdatensätzen ist oft sehr aufwendig, weshalb die Verwendung automatisiert erstellter Testdatensätze eine attraktive Alternative darstellt. Je nach Anwendungsfall gibt es verschiedene Möglichkeiten, solche synthetischen Testdatensätze zu erstellen, die teils von hohem Ideenreichtum zeugen. So kann man auf Grundlage eines vorhandenen kleineren Testdatensatzes neue Testfälle generieren, indem man Bestandteile in Frage-Antwort-Paaren substituiert, von denen man weiß, dass sie für die Korrektheit der Labels nicht relevant sind. In manchen Fällen ist es auch möglich, Testdatensätze von starken Sprachmodellen generieren zu lassen (sogenanntes <em>LLM-as-a-Generator</em>). Das setzt allerdings voraus, dass die Zuverlässigkeit der Sprachmodelle, die für die Erstellung von Testdatensätzen verwendet werden, bereits hinreichend evaluiert und optimiert wurde.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<p>Synthetische Testdatensätze sind jedoch nicht für alle Anwendungsfälle geeignet. In bestimmten Fällen bedarf es nach wie vor Menschen für die Erstellung von Testdatensätzen. Das ist allerdings mit eigenen Herausforderungen verbunden. Neben dem hohen Ressourcenaufwand muss für so erstellte Testdatensätze in gleicher Weise sichergestellt werden, dass sie korrekte Labels enthalten. Dafür werden in der Regel Methoden aus der Inhaltsanalyse verwendet.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> So werden typischerweise mehrere Annotator:innen eingesetzt, um die Testdatensätze zu annotieren, und die Inter-Annotator:innen-Übereinstimmung wird berechnet, um die Güte der Annotationen zu bewerten. Das liefert zumindest indirekte Hinweise darauf, ob die Testdatensätze korrekte Labels enthalten.</p>
+<p>Ein weiteres praktisches Problem ist die sogenannte <em>Training-Test Contamination</em>. Wenn KI-Modelle bereits während des Trainings Zugang zu den Testdatensätzen haben, sind ihre Testergebnisse auf diesen Datensätzen kein Indikator für ihre Zuverlässigkeit, sondern eher eine Überprüfung, ob sie die Testdatensätze bereits „gelernt“ haben. Das kann zum Beispiel passieren, wenn die Testdatensätze öffentlich zugänglich sind und damit in den Trainingsdaten enthalten sein könnten. Das kann unter Umständen zu einer systematischen Überschätzung der Zuverlässigkeit von KI-Tools führen.</p>
+<section id="mehrdeutigkeit-und-kontextabhängigkeit" class="level4" data-number="4.2.1.1">
+<h4 data-number="4.2.1.1" class="anchored" data-anchor-id="mehrdeutigkeit-und-kontextabhängigkeit"><span class="header-section-number">4.2.1.1</span> Mehrdeutigkeit und Kontextabhängigkeit</h4>
+<p>Die bisher dargestellten Herausforderungen werden in der Wissenschaft und Praxis der Entwicklung und Evaluierung von KI-basierten Systemen bereits breit diskutiert. Eine prinzipielle Herausforderung, die weniger Beachtung findet, soll hier ausführlicher dargestellt werden. Das bisherige Bild der Optimierung von KI-Tools durch systematische Evaluation suggeriert unter Umständen, dass es bei Fragen zur Korrektheit von KI-generierten Resultaten immer eine eindeutige Antwort gibt. In vielen Fällen, insbesondere in deliberativen Kontexten, fehlt es an dieser Eindeutigkeit.</p>
+<p>Das Beispiel zur Detektion toxischer Sprache kann wieder als einfache Illustration dienen. Toxische Sprache ist ein soziokulturelles Phänomen, das in mehrfacher Hinsicht von Mehrdeutigkeit geprägt ist.</p>
+<p>Zum einen ist die Detektion toxischer Sprache häufig kontextabhängig. Das heißt, ob eine Äußerung toxische Sprache darstellt, kann vom kulturellen und situativen Kontext abhängen. Dazu zählen kulturelle Normen, der verwendete Dialekt, die Intentionen der Sprecher:innen, die Frage, ob es sich um indirekte Rede, Metaphern oder Satire handelt, und ob Codes oder sogenannte Geusenwörter (im Engl. <em>reclaimed speech</em>) verwendet werden. Diese Informationen sind der Äußerung nicht immer selbst ablesbar, sodass zusätzliche Kontextinformationen verfügbar sein müssen. Das gilt für die Trainings- und Testdatensätze sowie für den Einsatz von KI zur Detektion toxischer Sprache. Nur wenige der vorhandenen Testdatensätze verfügen allerdings über solche Kontextinformationen.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
+<p>Eine weitere Herausforderung ist die definitorische Vielfalt beim Begriff toxischer Sprache. Toxische Sprache kann auf unterschiedliche Weise definiert werden <span class="citation" data-cites="fortuna_toxic_2020">(<a href="references.html#ref-fortuna_toxic_2020" role="doc-biblioref">Fortuna u.&nbsp;a. 2020</a>)</span>. Hinzu kommt, dass es weitere Begriffe gibt, die zwar Überschneidungen, aber eben auch Unterschiede zu toxischer Sprache aufweisen, wie zum Beispiel „hate speech“, „offensive speech“ oder „uncivil speech“. Auch wenn diese Begriffe und die dazugehörigen Definitionen Überschneidungen aufweisen, gibt es Unterschiede, die in vielen Einzelfällen für die Toxizitätskategorisierung von Äußerungen relevant sind. Diese definitorische Vielfalt spiegelt sich auch in den Datensätzen wider, sodass es teilweise schwierig ist, passende Datensätze für die Evaluierung von KI-Tools zu finden.</p>
+<p>Die beiden bisher genannten Probleme sind keine prinzipiellen Hindernisse für die Evaluierung und Optimierung von KI-Tools, sondern eher praktische Herausforderungen, die mit entsprechenden Ressourcen und Aufwand überwunden werden können. So muss dafür gesorgt werden, dass die notwendigen Kontextinformationen verfügbar sind, und es muss immer klar sein, um welches sprachliche Phänomen es geht, beziehungsweise welche Definitionen als Grundlage für eine Kategorisierung dienen. Das löst die Probleme der Mehrdeutigkeit und der Kontextabhängigkeit allerdings nicht vollständig: Selbst wenn alle notwendigen Kontextinformationen verfügbar sind und es eine klare Definition gibt, kann es immer noch einen Graubereich geben, in dem die Kategorisierung von Äußerungen als toxisch oder nicht toxisch interpretationsoffen ist. Das liegt unter anderem daran, dass toxische Sprache ein graduelles Phänomen ist und Äußerungen also mehr oder weniger toxisch sein können. Selbst die Festlegung einer Grenze kann die Interpretationsoffenheit nicht vollständig beseitigen.</p>
+<p>Die Herausforderungen begrifflicher Vielfalt, Kontextabhängigkeit und nicht verschwindender Graubereiche betreffen viele Anwendungen KI-gestützter Deliberation, weil es häufig um die Generierung und Analyse natürlicher Sprache geht, die in einem soziokulturellen und situativen Kontext eingebunden und damit im Einzelfall interpretationsoffen sein kann.</p>
+</section>
+</section>
+<section id="lösungsansätze" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="lösungsansätze"><span class="header-section-number">4.2.2</span> Lösungsansätze</h3>
+<p>Diese Herausforderungen bei der Evaluierung und Optimierung KI-basierter Deliberation sprechen nicht grundsätzlich gegen den Einsatz von KI – zumal sie gleichermaßen berücksichtigt werden müssen, wenn Menschen diese Aufgaben übernehmen. Gerade in deliberativen Kontexten sind Aufgaben, die KI unterstützen soll, häufig normativ aufgeladen und nur selten vollständig objektivierbar. Daher müssen KI-Systeme hier besonders vorsichtig, transparent und korrigierbar eingesetzt werden. Die folgenden Empfehlungen können dazu beitragen, durch Evaluation und Transparenz Vertrauen in KI-gestützte Deliberation zu schaffen.</p>
+<p>Durch die zentrale Rolle der Zuverlässigkeit und Korrektheit von deliberationsunterstützenden KI-Tools empfehlen sich <strong>unabhängige und transparente Evaluationen</strong>. Die Evaluierung von KI-Tools sollte von unabhängigen Dritten durchgeführt werden, die in keinem direkten Interessenkonflikt stehen. Die Ergebnisse solcher Evaluationen sollten transparent und vollständig veröffentlicht werden, damit sie von der Öffentlichkeit nachvollzogen und kritisch bewertet werden können. Solche unabhängigen Evaluationen und die Veröffentlichung der Ergebnisse bilden eine wichtige Grundlage für das Vertrauen von Nutzer:innen. Die Qualität der Testdatensätze hinsichtlich der oben genannten Kriterien muss ebenfalls unabhängig überprüfbar sein. Eine Möglichkeit besteht darin, die Datensätze frei zugänglich zu machen, damit ihre Qualität unabhängig bewertet werden kann, was jedoch auch mit einer erhöhten Gefahr der genannten <em>Training-Test-Contamination</em> einhergeht.</p>
+<p>Ein weiteres Mittel zur Steigerung des Vertrauens in KI-Tools ist <strong>technische Transparenz</strong>. Das bedeutet, dass die technischen Details der KI-Pipelines offengelegt werden sollten, damit unabhängige Dritte nachvollziehen können, wie Ergebnisse entstehen und ob grundlegende Anforderungen wie z.B. Datensicherheit erfüllt sind. Technische Transparenz umfasst zum Beispiel die Offenlegung der verwendeten Modelle, des Pipelinedesigns, der Prompts sowie der IT-Infrastruktur. Ein hohes Maß an Offenheit erfordert auch die Veröffentlichung des Programmcodes unter Open-Source-Lizenzen und die Nutzung von Open-Weight-Modellen, die im Gegensatz zu proprietären Modellen wie ChatGPT frei verfügbar und selbst betreibbar sind. Bei technischer Offenheit geht es nicht primär darum, dass Nutzer:innen in die Lage versetzt werden, Ergebnisse selbst zu reproduzieren, sondern darum, dass unabhängige Dritte die KI-Tools kritisch analysieren und bewerten können. Durch solche Analysen kann nicht nur die Zuverlässigkeit der KI-Tools überprüft, sondern auch die Vertrauenswürdigkeit der Anbieter:innen bewertet werden, was wiederum das Vertrauen von Nutzer:innen in die KI-Tools stärken kann.</p>
+<p>Die bisher genannten Empfehlungen reichen allerdings unter Umständen nicht aus, um genug Vertrauen in KI-gestützte Deliberation zu schaffen. Sie sorgen im besten Fall für hinreichende Zuverlässigkeit und Transparenz bei der Verlässlichkeitsprüfung. Die durch systematische Evaluation optimierte Zuverlässigkeit von KI-Tools bleibt jedoch begrenzt. Damit können und werden diese Tools im Einzelfall fehleranfällig sein. Selbst wenn die Fehlerquote gering ist, kann dies insgesamt zu einem Vertrauensverlust führen, wenn die Fehleranfälligkeit der Systeme nicht adäquat abgefangen wird. Hierfür sind weitere Maßnahmen notwendig, um Vertrauen in KI-gestützte Deliberation zu schaffen.</p>
+<p>So sollte es eine hinreichende <strong>Transparenz und Erklärbarkeit der Ergebnisse</strong> geben. Nutzer:innen sollten nachvollziehen können, wie und warum bestimmte Ergebnisse entstehen. Hierbei geht es nicht unbedingt um kausale Erklärungen auf technischer Ebene, die für die meisten Nutzer:innen ohnehin selten hilfreich wären, sondern um nachvollziehbare Erklärungen für Techniklaien. Je nach Aufbau der KI-Anwendung gibt es dafür verschiedene Möglichkeiten: Wenn die KI Informationen aus Dokumenten extrahiert, sollten diese Quellen und ihr Zusammenhang mit dem Ergebnis transparent gemacht werden; wenn die KI ihr Ergebnis in mehreren Schritten erarbeitet, sollten auch die Zwischenergebnisse einsehbar sein. Eine besondere Rolle kommt generativen Sprachmodellen zu: Von diesen kann man sich Ergebnisse durch Rückfragen erklären lassen und Rechtfertigungen einfordern. Bei den neueren Reasoning-Modellen, einer Weiterentwicklung des Chain-of-Thought-Ansatzes <span class="citation" data-cites="betz_thinking_2021">(<a href="references.html#ref-betz_thinking_2021" role="doc-biblioref">Betz u.&nbsp;a. 2021</a>)</span>, können die der Antwort vorgeschalteten „Überlegungsschritte“ (engl. <em>reasoning trace</em>) für Nutzer:innen einsehbar gemacht werden. Unabhängig davon, ob diese natürlichsprachlichen Erklärungen und Rechtfertigungen tatsächlich kausal relevant für die Ergebnisse sind oder nur ex post erzeugt werden, können sie für Nutzer:innen hilfreich sein, um die Ergebnisse besser zu verstehen und einzuordnen. Sie können auch als Grundlage für eine mögliche Prüfung der Ergebnislegitimität dienen.</p>
+<p>Damit kommen wir zu einer weiteren Anforderung. Die Ergebnisse algorithmischer Entscheidungen sollten <strong>anfechtbar und revidierbar</strong> sein. Nutzer:innen sollten nicht nur die Möglichkeit haben, Rechtfertigungen und Erklärungen einzufordern, sondern darüber hinaus ihr Recht ausüben können, die Ergebnisse anzufechten und Korrekturen zu verlangen. Dafür muss es in den entsprechenden deliberativen Kontexten Prozesse und Anlaufstellen geben. Die aktive Einbindung der Nutzer:innen hilft nicht nur, KI-Anwendungen zu verbessern, sondern zeigt Nutzer:innen auch, dass sie fehlerhaften Ergebnissen einer KI nicht ausgeliefert sind.</p>
+<p>Für den <strong>Umgang mit Mehrdeutigkeit und Kontextabhängigkeit</strong> gibt es je nach konkretem Einsatzszenario unterschiedliche Möglichkeiten, die sich kombinieren lassen. So kann in einem ersten Schritt, Mehrdeutigkeit und Kontextabhängigkeit durch die Bereitstellung von Kontextinformationen sowie durch die Festlegung klarer Definitionen reduziert werden. Auf der Evaluationsseite setzt dies voraus, dass Test- und ggf. Trainingsdatensätze mit entsprechenden Kontextinformationen und klaren Definitionen erstellt werden. Auf der Seite der KI-Tools muss dafür gesorgt werden, dass die notwendigen Kontextinformationen verfügbar sind und die KI-Tools so ausgestaltet sind, dass sie diese Informationen auch nutzen können.</p>
+<p>Kann durch solche Maßnahmen trotzdem keine Ergebniseindeutigkeit sichergestellt werden, muss mit der verbleibenden Mehrdeutigkeit transparent umgegangen werden. Die beiden vorgestellten Prototypen (siehe <a href="projektergebnisse.html" class="quarto-xref"><span>Kapitel 3</span></a>) zeigen zwei grundlegende und komplementäre Wege auf:</p>
+<p>Eine Möglichkeit besteht darin, die Mehrdeutigkeit so aufzulösen, dass die KI-Anwendung in einem ersten Schritt aufgefordert wird, den Interpretationsspielraum durch die Formulierung unterschiedlicher Interpretationen auszuloten. Anschließend werden dann für jede der identifizierten Interpretationen die weiteren Schritte der Pipeline durchlaufen. Dieser Weg wird durch die EvidenceSeeker-Boilerplate illustriert (<a href="projektergebnisse.html#sec-evse" class="quarto-xref"><span>Kapitel 3.2</span></a>). Die Details der Disambiguierung müssen in Abhängigkeit der konkreten Anwendung gestaltet werden. Im EvidenceSeeker ging es vor allem darum, deskriptive und normative Aussagen zu unterscheiden, weil diese Differenzierung wichtig für die weiteren Schritte des Faktencheckprozesses ist. Disambiguierung stellt auch separate Anforderungen an die Evaluierung, weil es hier nicht nur darum geht, ob die KI-Tools die richtigen Ergebnisse liefern, sondern auch, ob sie Mehrdeutigkeiten korrekt erkennen und auflösen können.</p>
+<p>Eine andere Möglichkeit besteht darin, die Mehrdeutigkeit nicht aufzulösen, sondern die damit verbundene Unsicherheit in den Ergebnissen transparent zu machen. Statt eindeutiger Antworten könnten Unsicherheiten qualitativ oder quantitativ angegeben werden. Es ist auch möglich, dass KI-Pipelines sich bei unzureichender Informationslage einer Antwort explizit enthalten, wie der Toxicity-Detector illustriert (<a href="projektergebnisse.html#sec-tode" class="quarto-xref"><span>Kapitel 3.1</span></a>). Auch dieser Weg stellt besondere Anforderungen an die Evaluierung. So müssen mögliche Unsicherheiten in den Testdatensätzen dargestellt werden, um zu evaluieren, ob die KI-Tools diese korrekt angeben können.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hinweis</span>Zusammenfassung der Empfehlungen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>Unabhängige und transparente Evaluationen:</strong> Die Evaluierung von KI-Tools sollte von unabhängigen Dritten durchgeführt werden, und die Ergebnisse solcher Evaluationen sollten transparent und vollständig veröffentlicht werden.</li>
+<li><strong>Technische Transparenz:</strong> Die technischen Details der KI-Pipelines sollten offengelegt werden, damit unabhängige Dritte nachvollziehen können, wie Ergebnisse entstehen und ob grundlegende Anforderungen wie z.B. Datensicherheit erfüllt sind.</li>
+<li><strong>Transparenz und Erklärbarkeit von Ergebnissen:</strong> Nutzer:innen sollten nachvollziehen können, wie und warum bestimmte Ergebnisse entstehen. Insbesondere sollten Erklärungen und Rechtfertigungen für Ergebnisse Nutzer:innen zugänglich sein.</li>
+<li><strong>Revidierbarkeit algorithmischer Entscheidungen:</strong> Nutzer:innen sollten nicht nur die Möglichkeit haben, Rechtfertigungen und Erklärungen einzufordern, sondern darüber hinaus ihr Recht ausüben können, die Ergebnisse anzufechten und Korrekturen einzufordern.</li>
+<li><strong>Umgang mit Mehrdeutigkeit und Kontextabhängigkeit:</strong> Mehrdeutigkeit und Kontextabhängigkeit sollten durch die Bereitstellung von Kontextinformationen sowie die Festlegung klarer Definitionen reduziert werden. Wenn trotzdem keine Ergebniseindeutigkeit sichergestellt werden kann, sollte mit der verbleibenden Mehrdeutigkeit transparent umgegangen werden, zum Beispiel durch die explizite Darstellung von Unsicherheiten oder die Formulierung unterschiedlicher Interpretationen.</li>
+</ol>
+</div>
+</div>
+<p>Diese Anforderungen formulieren Ideale, die in der Praxis mehr oder weniger stark umgesetzt werden können. Wie wichtig sie für einen bestimmten Anwendungsfall sind, lässt sich nicht pauschal beantworten, sondern hängt davon ab, wie relevant die genannten Herausforderungen im konkreten Fall sind. Darüber hinaus müssen die formulierten Gründe womöglich mit anderen Überlegungen abgewogen werden. So könnten sie beispielsweise mit berechtigten Geschäftsinteressen in Konflikt stehen. Hier gilt es, gesamtgesellschaftlich passende regulatorische Rahmenbedingungen für deliberative KI zu schaffen, um solche Konflikte möglichst gering zu halten.</p>
+<p>KI hat großes Potenzial zur Unterstützung und Verbesserung deliberativer Prozesse. Ob dieses Potenzial ausgeschöpft wird, entscheidet sich jedoch nicht allein anhand der technischen Leistungsfähigkeit der KI-Anwendungen, sondern an ihrer Einbettung in transparente, überprüfbare und kontrollierbare Verfahren.</p>
+</section>
+</section>
+<section id="praktische-herausforderungen" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="praktische-herausforderungen"><span class="header-section-number">4.3</span> Praktische Herausforderungen</h2>
+<p>Neben den bereits genannten Herausforderungen, die sich vor allem auf die Evaluierung und Optimierung von KI-Tools sowie deren Zusammenhang mit dem Vertrauen in KI-basierte Deliberation beziehen, gibt es eine ganze Reihe praktischer Herausforderungen, die zum Teil technologiespezifisch und zum Teil spezifisch für den zivilgesellschaftlichen Bereich sind. Diese Herausforderungen können hier weder vollständig noch abschließend behandelt werden. Wir wollen zumindest Herausforderungen aufgreifen, die uns im Laufe des Projekts begegnet sind, und vorläufige Überlegungen darstellen.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+<p>Eine praktische Herausforderung bei der Entwicklung KI-basierter Applikationen ist die <strong>hohe Geschwindigkeit, mit der sich die Technologie weiterentwickelt.</strong> Das betrifft nicht nur die Sprachmodelle selbst, sondern auch die Frameworks und Möglichkeiten, KI-basierte Arbeitsabläufe zu gestalten. Während zu Beginn des KIdeKu-Projekts die Entwicklung von KI-Tools hauptsächlich auf der Grundlage statischer Pipelines erfolgte, hat sie sich im Laufe des Projekts zunehmend in Richtung flexibler Pipelines in Form von agentenbasierten Systemen entwickelt. Das macht statische KI-Workflows nicht überflüssig, aber es zeigt, dass die Entwicklung von KI-Tools in ständigem Wandel begriffen ist und es leicht passieren kann, dass eine konkrete Implementierung nach kurzer Zeit schon wieder veraltet ist.</p>
+<p>Die Entwicklung modellagnostischer Anwendungen stellt damit lediglich die grundlegendste Anforderung an KI-Tools dar. KI-Tools sollten darüber hinaus so gestaltet werden, dass es möglichst einfach ist, die konkrete technische Implementierung zu erweitern bzw. vollständig auszuwechseln. Dafür gibt es verschiedene Möglichkeiten: So sollten Anwendungen mindestens stark modular aufgebaut sein, damit einzelne Komponenten unabhängig voneinander angepasst und ausgetauscht werden können. Die immer weiter voranschreitende KI-getriebene Softwareentwicklung schafft selbst neue Möglichkeiten mit diesem Problem umzugehen. So könnte man die Ziele und Umsetzungskonzepte natürlichsprachlich als generische Beschreibungen formulieren und die Implementierung darauf aufbauend weitgehend KI-getrieben umsetzen. Diese generischen Beschreibungen sollten möglichst explizit und vollständig sein und unter anderem das Design, die Anforderungen, die Arbeitsabläufe, die Prompts sowie den Technologie-Stack umfassen. Entwickeln sich die Frameworks dann so stark weiter, dass eine Neuimplementierung notwendig wird, müsste man – etwas vereinfacht ausgedrückt – lediglich die Beschreibung des Technologie-Stacks anpassen, um die neue Implementierung zu generieren.</p>
+<p>Ein konkreterer Vorschlag ist die Verwendung sogenannter <em>Agent Skills</em> (Engl. für „Agentenfähigkeiten“), die in der agentenbasierten KI-Entwicklung zunehmend an Popularität gewinnen.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> Skills sind im Grunde genommen natürlichsprachliche Anleitungen, die beschreiben, wie bestimmte Aufgaben oder Funktionen erfüllt werden sollen. Sie können in agentenbasierten Systemen dynamisch aufgerufen und ausgeführt werden, um bestimmte Funktionen zu erfüllen, und werden unabhängig von der konkreten technischen Implementierung formuliert.</p>
+<p>Am Beispiel der vorgestellten Pipeline des EvidenceSeekers: Die Prompts für die drei unterschiedlichen Schritte der Pipeline sind bereits technologieunabhängig formuliert und liegen in Konfigurationsdateien vor, sodass sie relativ einfach angepasst und in alternativen Implementierungen wiederverwendet werden können. Weitergehen könnte man, indem man die unterschiedlichen Schritte der Pipeline und das Design der darauf aufbauenden Pipeline als Skills formuliert. Die so beschriebene Fähigkeit, Evidenzen in einer vorhandenen Wissensbasis zu identifizieren und den Grad ihrer Bestätigung zu qualifizieren, ließe sich damit in agentenbasierten Abläufen technologieunabhängig einbinden.</p>
+<p>Sofern das Ziel darin besteht, KI-Anwendungen so zu konzeptionieren und umzusetzen, dass sie über das Stadium von Prototypen hinausgehen und tatsächlich in der Praxis eingesetzt werden, ergeben sich eine Reihe weiterer praktischer Herausforderungen.</p>
+<p>Zunächst stellt sich die grundlegende strategische Frage nach der <strong>Wahl des Modell-Ökosystems</strong>. Open-Weight-Modelle, wie sie über <a href="https://huggingface.co/">Hugging Face</a> angeboten werden, bieten potenziell größere Kontrolle, Transparenz und Unabhängigkeit. Sie können außerdem über eigene IT-Infrastrukturen betrieben werden, was die Anpassung an spezifische Anforderungen erleichtert, Abhängigkeiten vermeidet und insbesondere die Einhaltung sowie das Monitoring von Datenschutz- und Sicherheitsanforderungen ermöglicht.</p>
+<p>Demgegenüber müssen die Anforderungen an Infrastruktur, Wartung, Sicherheit und Modellpflege selbst erfüllt werden. Sofern KI-basierte Deliberationstools im zivilgesellschaftlichen Bereich entwickelt und eingesetzt werden, kann dies eine erhebliche Hürde darstellen, da diese Organisationen häufig klein sind und nur über stark begrenzte Ressourcen verfügen. Das ist umso bedenklicher, als dass Datenschutz, Transparenz, Zuverlässigkeit und Sicherheit gerade in deliberativen Kontexten besonders relevant sind (siehe oben).</p>
+<p>Eine mögliche Lösung könnte darin bestehen, dass Bund oder Länder zivilgesellschaftlichen Organisationen KI-Infrastruktur zur Nutzung bereitstellen, die über entsprechende API-Schnittstellen zugänglich ist.</p>
+<p>Ein weiterer Aspekt bei der Abwägung zwischen Open-Weight- und proprietären Modellen betrifft die Performance. Nach wie vor besteht eine Lücke zwischen der Leistungsfähigkeit von Open-Weight-Modellen und der von proprietären Modellen, die von großen Plattformanbietern bereitgestellt werden. Aus der Perspektive von User:innen reicht es unter Umständen nicht aus, dass KI-Tools hinreichend zuverlässig sind, sondern sie müssen mit der Leistungsfähigkeit von ChatGPT und Co.&nbsp;mithalten können, um breite Akzeptanz zu erreichen. Das gilt insbesondere für Anwendungen, die in direkter Konkurrenz zu proprietären Modellen stehen, etwa KI-gestützte Chatbots oder Recherchetools.</p>
+<p>Erst einmal lässt sich festhalten, dass sich diese Performance-Lücke in den letzten zwei Jahren verkleinert hat. Geht dieser Trend weiter, könnte diese Herausforderung in Zukunft weniger relevant sein. Darüber hinaus können verschiedene Maßnahmen ergriffen werden, um die Akzeptanz von Applikationen, die auf Open-Weight-Modellen basieren, zu steigern. So könnten die genannten Vorteile stärker kommuniziert werden. Vielleicht sollte auch darauf verzicht werden, mit generisch ausgelegten KI-Tools zu konkurrieren. Stattdessen sollte der Fokus auf die Entwicklung von KI-Anwendungen liegen, die einen sichtbaren Mehrwert generieren, indem sie auf spezifische organisatorische Prozesse, Fachlogiken oder regulatorische Anforderungen zugeschnitten werden und domänenspezifisches und institutionelles Wissen strukturiert einbinden.</p>
+<p>Ein weiterer zentraler Aspekt betrifft die <strong>Nachhaltigkeit von KI-Projekten</strong> im zivilgesellschaftlichen Bereich. Gerade im Kontext öffentlich geförderter oder zivilgesellschaftlicher Vorhaben tritt häufig das Problem auf, dass Anwendungen nach Projektende nicht weiterentwickelt und in der Folge auch nicht genutzt werden. Mit dem Auslaufen der Finanzierung enden oft Wartung, Weiterentwicklung und Hosting. Zurück bleiben veraltete Systeme, die Sicherheitsrisiken mit sich bringen, oder schlicht abgeschaltete Dienste.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></p>
+<p>Dieses Problem ist sicherlich komplex und hängt mit strukturellen Rahmenbedingungen zusammen. Eine Möglichkeit, dem entgegenzuwirken, ist, die Anwendungen so zu entwickeln und aufzusetzen, dass sie möglichst reibungslos von Dritten aufgegriffen und weiterentwickelt werden können. Das könnte zum Beispiel durch die Veröffentlichung von Quellcode unter geeigneten liberalen Open-Source-Lizenzen, die Bereitstellung ausführlicher Dokumentation und die Einbindung von Nutzer:innen in die Entwicklung geschehen.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-betz_thinking_2021" class="csl-entry" role="listitem">
+Betz, Gregor, Kyle Richardson, und Christian Voigt. 2021. <span>„Thinking Aloud: <span>Dynamic</span> Context Generation Improves Zero-Shot Reasoning Performance of <span>GPT-2</span>“</span>. <em>arXiv preprint arXiv:2103.13033</em>. <a href="https://arxiv.org/abs/2103.13033">https://arxiv.org/abs/2103.13033</a>.
+</div>
+<div id="ref-fortuna_toxic_2020" class="csl-entry" role="listitem">
+Fortuna, Paula, Juan Soler, und Leo Wanner. 2020. <span>„Toxic, Hateful, Offensive or Abusive? <span>What</span> Are We Really Classifying? <span>An</span> Empirical Analysis of Hate Speech Datasets“</span>. In <em>Proceedings of the Twelfth Language Resources and Evaluation Conference</em>, herausgegeben von Nicoletta Calzolari, Frédéric Béchet, Philippe Blache, u.&nbsp;a. European Language Resources Association.
+</div>
+<div id="ref-friess_ai_2025" class="csl-entry" role="listitem">
+Friess, Dennis, Carina Weinmann, und Mira Warné. 2025. <span>„<span>AI</span> and <span>Deliberation</span>: <span>Normative Ideals</span> in the <span>Light</span> of <span>Current AI Research</span> - <span>A Review</span>“</span>. <em>Journal of Deliberative Democracy</em> 21 (1). <a href="https://doi.org/10.16997/jdd.1805">https://doi.org/10.16997/jdd.1805</a>.
+</div>
+<div id="ref-giraud_learning_2025" class="csl-entry" role="listitem">
+<span class="nocase">Giraud, Eva Haifa, Elizabeth Poole, Ed de Quincey, und John E. Richardson</span>. 2025. <span>„Learning from Online Hate Speech and Digital Racism: <span>From</span> Automated to Diffractive Methods in Social Media Analysis“</span>. <em>The Sociological Review</em> 73 (6): 1388–407. <a href="https://doi.org/10.1177/00380261241305260">https://doi.org/10.1177/00380261241305260</a>.
+</div>
+<div id="ref-jungherr_artificial_2025" class="csl-entry" role="listitem">
+Jungherr, Andreas, und Adrian Rauchfleisch. 2025. <span>„Artificial <span>Intelligence</span> in Deliberation: <span>The AI</span> Penalty and the Emergence of a New Deliberative Divide“</span>. <em>Government Information Quarterly</em> 42 (4): 102079. <a href="https://doi.org/10.1016/j.giq.2025.102079">https://doi.org/10.1016/j.giq.2025.102079</a>.
+</div>
+<div id="ref-krippendorff_content_2019" class="csl-entry" role="listitem">
+Krippendorff, Klaus. 2019. <em>Content Analysis an Introduction to Its Methodology</em>. Fourth edition. SAGE.
+</div>
+<div id="ref-tessler_ai_2024" class="csl-entry" role="listitem">
+Tessler, Michael Henry, Michiel A. Bakker, Daniel Jarrett, u.&nbsp;a. 2024. <span>„<span>AI</span> Can Help Humans Find Common Ground in Democratic Deliberation“</span>. <em>Science</em> 386 (6719). <a href="https://doi.org/10.1126/science.adq2852">https://doi.org/10.1126/science.adq2852</a>.
+</div>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Ähnliche und komplementäre Überlegungen finden sich im <a href="https://civic-data.de/menschzentrierte-ki-leitfaden-fuer-ngos-wegweiser-ux/">Blogbeitrag von Marvin Sieger</a>, der aus dem Projekt „Wegweiser.UX-für-KI“ berichtet.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Diese Gefahr ist auch deswegen relevant, weil in der Forschung zu deliberativer KI die Anforderung gleicher Teilhabe weniger stark untersucht wird als andere Normen <span class="citation" data-cites="friess_ai_2025">(<a href="references.html#ref-friess_ai_2025" role="doc-biblioref">Friess u.&nbsp;a. 2025</a>)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Dieser Ausdruck stammt von <span class="citation" data-cites="jungherr_artificial_2025">Jungherr und Rauchfleisch (<a href="references.html#ref-jungherr_artificial_2025" role="doc-biblioref">2025</a>)</span>, die in einer repräsentativen Umfrage zeigen, dass eine allgemeine Skepsis gegenüber KI mit einer skeptischen Einstellung zu den Fähigkeiten deliberativer KI korreliert.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Die folgenden Punkte wurden auf dem <a href="https://compphil2mmae.github.io/de/event/251113_w_kideku_workshop/">KIdeKu-Workshop</a> von Julian Müller und Eike Düvel vorgebracht.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Im Projekt „Künstliche Intelligenz und Bürgerräte“ (<a href="https://www.interaktive-technologien.de/projekte/kib">KIB</a>) werden Einsatzmöglichkeiten von KI in der Öffentlichkeitsbeteiligung untersucht.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Vgl. bspw. <span class="citation" data-cites="tessler_ai_2024">Tessler u.&nbsp;a. (<a href="references.html#ref-tessler_ai_2024" role="doc-biblioref">2024</a>)</span>.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Der syncAILO-Datensatz ist ein Beispiel für einen synthetischen Datensatz, der mit einer LLM-Pipeline erstellt wurde und auf dessen Grundlage unterschiedliche Test- und Trainingsdatensätze erstellt werden können. Vergleiche <a href="projektergebnisse.html#sec-syncialo" class="quarto-xref"><span>Kapitel 3.3</span></a>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Wie bspw. in <span class="citation" data-cites="krippendorff_content_2019">Krippendorff (<a href="references.html#ref-krippendorff_content_2019" role="doc-biblioref">2019</a>)</span> dargestellt.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Vgl. auch <a href="projektergebnisse.html#sec-tode-eval" class="quarto-xref"><span>Kapitel 3.1.2</span></a>.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Für einen Überblick aus der Perspektive von NROs sind die Resultate des <a href="https://sozial-gesundheitswissenschaften.oth-regensburg.de/forschung/ist-institut-fuer-technikfolgenabschaetzung/projekte/projekte-im-bereich-mensch-technik-interaktion/kiniro">KINiro-Projekts</a> der OTH Regensburg von großer Relevanz. Dort wurde in qualitativen und quantitativen Studien untersucht, welche Herausforderungen NROs bei der Entwicklung und Nutzung von KI-Tools sehen.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Skills wurden ursprünglich von Anthropic für Claude eingeführt, werden aber mittlerweile von den meisten Frameworks für agentenbasierte KI-Tools unterstützt.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>Ein Phänomen, das sich exemplarisch im <a href="https://civictech.guide/graveyard/">„Civic Tech Graveyard“</a> dokumentiert findet.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Kopiert");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Kopiert");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/debatelab\.github\.io\/kideku-report\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./projektergebnisse.html" class="pagination-link" aria-label="Projektergebnisse">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Projektergebnisse</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="Literatur">
+        <span class="nav-page-text">Literatur</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
