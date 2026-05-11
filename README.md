@@ -23,7 +23,7 @@ Die profilspezifischen Kapitelstrukturen sind in `_quarto-html.yml` bzw. `_quart
 quarto render
 ```
 
-Erzeugt die mehrseitige HTML-Website im Verzeichnis `_book/`.
+Erzeugt die mehrseitige HTML-Website im Verzeichnis `docs/`.
 
 Alternativ für die Live-Vorschau im Browser:
 
