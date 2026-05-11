@@ -1,4 +1,4 @@
-# Home {.unnumbered}
+# Überblick {.unnumbered}
 
 <a href="./Chancen-von-KI-zur-Stärkung-deliberativer-Kultur.pdf" target="_blank" class="float-right" style="width:220px;">
   <img src="./figures/frontpage_thumbnail.png" alt="PDF herunterladen">
@@ -47,19 +47,18 @@ Weitergabe unter gleichen Bedingungen 4.0 International ([CC BY-SA 4.0](https://
 BibTex:
 
 ```bibtex
-@article{cacean_xx_2026,
+@article{cacean_chancen_2026,
   title = {Chancen von KI zur Stärkung deliberativer Kultur},
   author = {Cacean, Sebastian},
   year = {2026},
-  month = march,
-  doi = {xx},
+  month = may,
+  doi = {10.5445/IR/1000193096},
   langid = {german},
-  url = {xx},
+  url = {https://doi.org/10.5445/IR/1000193096},
 }
 ```
 
 ::: {.callout-note icon=false}
 ## Zitierweise (Beispiel):
-Cacean, S. (2026). *Chancen von KI zur Stärkung unserer deliberativen Kultur - Abschlussbericht*. <https://xxx>
+Cacean, S. (2026). *Chancen von KI zur Stärkung deliberativer Kultur*. <https://doi.org/10.5445/IR/1000193096>
 :::
-
