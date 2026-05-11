@@ -2,22 +2,21 @@ project:
   type: book
   pre-render: ./pre-render.sh
   output-dir: docs
+  resources:
+    - .nojekyll
 lang: de
 book:
   title: "Chancen von KI zur Stärkung deliberativer Kultur"
   author: "Sebastian Cacean"
-  # TODO:
-  date: "3/20/2026"
+  date: "5/11/2026"
   description: |
     Diese Seite dokumentiert die Ergebnisse des KIdeKu-Projekts, das untersuchte, wie generative Sprachmodelle zur Stärkung deliberativer Demokratie eingesetzt werden können. Er systematisiert Einsatzszenarien, stellt die entwickelten Open-Source-Prototypen vor und formuliert Empfehlungen für den verantwortungsvollen KI-Einsatz in deliberativen Kontexten.
   version: v1.0
-  # TODO:
-  doi: xx
+  doi: 10.5445/IR/1000193096
   downloads: [pdf]
   sharing: [linkedin]
-  # TODO:
-  site-url: https://x
-  repo-url: https://x
+  site-url: https://debatelab.github.io/kideku-report/
+  repo-url: https://github.com/debatelab/kideku-report
   license: "CC BY-SA 4.0"
   keyword: "AI, LLM, deliberation, democracy, AI-tools, argumentation, Habermas"
   # chapters are defined per-profile in _quarto-html.yml and _quarto-pdf.yml
@@ -34,8 +33,8 @@ profile:
 
 citation: 
   type: report
-  url: https://xx
-  doi: xx
+  url: https://debatelab.github.io/kideku-report/
+  doi: 10.5445/IR/1000193096
 
 
 format:
@@ -49,7 +48,7 @@ format:
   pdf:
     filters:
       - strip-emoji.lua
-    documentclass: sdqtechreport
+    documentclass: sdqtechreport # (contains KIT specific styling that is not open source)
     # documentclass: scrreprt
     classoption: [twoside, ngerman]
     papersize: a4
