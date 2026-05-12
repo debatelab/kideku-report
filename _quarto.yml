@@ -20,6 +20,13 @@ book:
   license: "CC BY-SA 4.0"
   keyword: "AI, LLM, deliberation, democracy, AI-tools, argumentation, Habermas"
   # chapters are defined per-profile in _quarto-html.yml and _quarto-pdf.yml
+  twitter-card:
+    image: figures/featured.png
+  open-graph:
+    image: figures/featured.png
+
+
+
 
 bibliography: literature.bib
 
